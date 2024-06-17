@@ -301,12 +301,14 @@ def eval_gt_acc(pred_all, gt_all, ovthresh=0.25, get_iou_func=get_iou):
                 results[img_id].append((classname, gt_bbox, best_pred_bbox, max_iou)) # appends result for a GT bbox in the image
     
     data = []
+    classnames = ['bathtub', 'bed', 'bookshelf', 'cabinet', 'chair', 'counter', 'curtain', 'desk', 'door', 'otherfurniture',
+                      'picture', 'refrigerator', 'showercurtain', 'sink', 'sofa', 'table', 'toilet', 'window']
     
     for img_id, bboxes in results.items():
         for idx, (classname, gt_bbox, pred_bbox, iou) in enumerate(bboxes):
             data.append({
                 'img_id': img_id,
-                'classname': classname,
+                'classname': classnames[classname],
                 'gt_index': idx,
                 'has_pred_bbox': pred_bbox is not None
             })
