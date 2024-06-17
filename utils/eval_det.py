@@ -20,6 +20,8 @@
     Ref: https://raw.githubusercontent.com/rbgirshick/py-faster-rcnn/master/lib/datasets/voc_eval.py
 """
 import numpy as np
+import pandas as pd
+
 
 def voc_ap(rec, prec, use_07_metric=False):
     """ ap = voc_ap(rec, prec, [use_07_metric])
@@ -254,3 +256,60 @@ def eval_det_multiprocessing(pred_all, gt_all, ovthresh=0.25, use_07_metric=Fals
         print(classname, ap[classname])
     
     return rec, prec, ap 
+
+def eval_gt_acc(pred_all, gt_all, ovthresh=0.25, get_iou_func=get_iou):
+    """ Generic functions to check if there is a corresponding predicted bounding box for each ground truth bounding box.
+        Input:
+            pred_all: map of {img_id: [(classname, bbox, score)]}
+            gt_all: map of {img_id: [(classname, bbox)]}
+            ovthresh: scalar, iou threshold
+        Output:
+            results: {img_id: [(gt_bbox, pred_bbox, iou)]}
+    """
+    pred = {} # map {img_id: {classname: [ (bbox, score) ] } }
+    gt = {} # map {img_id: {classname: [ bbox ] } }
+    
+    for img_id in pred_all.keys():
+        pred[img_id] = {}
+        for classname, bbox, score in pred_all[img_id]:
+            if classname not in pred[img_id]:
+                pred[img_id][classname] = []
+            pred[img_id][classname].append((bbox, score))
+    
+    for img_id in gt_all.keys():
+        gt[img_id] = {}
+        for classname, bbox in gt_all[img_id]:
+            if classname not in gt[img_id]:
+                gt[img_id][classname] = []
+            gt[img_id][classname].append(bbox)
+
+    results = {} # map {img_id: [gt_bbox, best_pred_bbox, max_iou] }
+
+    for img_id in gt.keys(): # iterate through each image file
+        results[img_id] = []
+        for classname in gt[img_id].keys(): # iterate all through each class present in the image, according to GT
+            gt_boxes = gt[img_id][classname] # get all the GT bboxes of a class in the image
+            pred_boxes = pred.get(img_id, {}).get(classname, []) # get all the predicted bboxes of a class in the image
+            for gt_bbox in gt_boxes: # iterate through each GT bbox in the image
+                max_iou = 0
+                best_pred_bbox = None
+                for pred_bbox, score in pred_boxes: # iterate through each predicted bbox in the image
+                    iou = get_iou_func(gt_bbox, pred_bbox) # get the IoU for each pair of bbox for a class between GT and predicted (if any)
+                    if iou > ovthresh and iou > max_iou: # check if iou meets the threshold to be accepted, and updates the best predicted bbox if score is highest
+                        max_iou = iou
+                        best_pred_bbox = pred_bbox
+                results[img_id].append((classname, gt_bbox, best_pred_bbox, max_iou)) # appends result for a GT bbox in the image
+    
+    data = []
+    
+    for img_id, bboxes in results.items():
+        for idx, (classname, gt_bbox, pred_bbox, iou) in enumerate(bboxes):
+            data.append({
+                'img_id': img_id,
+                'classname': classname,
+                'gt_index': idx,
+                'has_pred_bbox': pred_bbox is not None
+            })
+    
+    df = pd.DataFrame(data, columns=['img_id', 'classname', 'gt_index', 'has_pred_bbox'])
+    return df

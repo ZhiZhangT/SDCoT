@@ -23,7 +23,7 @@ from logger import init_logger
 from model import create_detection_model, load_detection_model
 from loss_helper import get_supervised_loss
 from ap_helper import APCalculator, parse_predictions, parse_groundtruths
-from train_fs import my_worker_init_fn
+from train_bt import my_worker_init_fn
 
 
 def evaluate(args, model, dataloader, logger, device, dataset_config):
@@ -32,12 +32,18 @@ def evaluate(args, model, dataloader, logger, device, dataset_config):
     CONFIG_DICT = {'remove_empty_box': (not args.faster_eval), 'use_3d_nms': args.use_3d_nms,
                    'nms_iou': args.nms_iou, 'use_old_type_nms': args.use_old_type_nms,
                    'cls_nms': args.use_cls_nms, 'per_class_proposal': args.per_class_proposal,
-                   'conf_thresh': args.conf_thresh, 'dataset_config': dataset_config}
+                   'conf_thresh': float(args.conf_thresh), 'dataset_config': dataset_config}
 
-    ap_calculator = APCalculator(args.ap_iou_threshold, dataset_config.class2type)
+    ap_calculator = APCalculator(float(args.ap_iou_threshold), dataset_config.class2type)
 
     stat_dict = {}
     model.eval()  # set model to eval mode (for bn and dp)
+    classifier_weights_learned = torch.empty_like(model.prediction_header.classifier_weights).copy_(
+                                        model.prediction_header.classifier_weights.detach())
+    classifier_weights_learned = classifier_weights_learned.squeeze(-1)
+
+    logger.cprint(f"------------ **AFTER** Classifier Weights Learned:------------  \n {classifier_weights_learned}")
+    
     for batch_idx, batch_data_label in enumerate(dataloader):
 
         if batch_idx % 50 == 0:
@@ -71,9 +77,19 @@ def evaluate(args, model, dataloader, logger, device, dataset_config):
         logger.cprint('eval mean %s: %f' % (key, stat_dict[key] / float(batch_idx + 1)))
 
     # Evaluate average precision
-    metrics_dict = ap_calculator.compute_metrics()
+    metrics_dict, gt_df = ap_calculator.compute_metrics()
     for key in metrics_dict:
         logger.cprint('eval %s: %f' % (key, metrics_dict[key]))
+
+    logger.cprint(f"------------ Ground Truths Dataframe: ------------: \n")
+    logger.cprint("Columns: ")
+    # Print each row of gt_df
+    for index, row in gt_df.iterrows():
+        logger.cprint(str(row))
+
+    # Save DataFrame as CSV
+    csv_file_path = 'gt_df_results.csv'
+    gt_df.to_csv(csv_file_path, index=False)
 
 
 def main(args):
@@ -102,15 +118,31 @@ def main(args):
                                          use_color=args.use_color,
                                          use_height=(not args.no_height),
                                          augment=False)
+        
+        from scannet_base import ScannetBaseDataset
+        train_dataset = ScannetBaseDataset(num_points=args.num_point,
+                                           use_color=args.use_color,
+                                           use_height=(not args.no_height),
+                                           augment=args.pc_augm)
     else:
         print('Unknown dataset %s. Exiting...' % (args.dataset))
         exit(-1)
 
     test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False,
                                   num_workers=args.batch_size//2, worker_init_fn=my_worker_init_fn)
-    DATASET_CONFIG = test_dataset.dataset_config
+    
+    train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=False,
+                                  num_workers=args.batch_size//2, worker_init_fn=my_worker_init_fn)
+    
+    TEST_DATASET_CONFIG = test_dataset.dataset_config
+    TRAIN_DATASET_CONFIG = train_dataset.dataset_config
 
-    model = create_detection_model(args, DATASET_CONFIG)
+    model = create_detection_model(args, TEST_DATASET_CONFIG)
+    classifier_weights_BEFORE = torch.empty_like(model.prediction_header.classifier_weights).copy_(
+                                        model.prediction_header.classifier_weights.detach())
+    classifier_weights_BEFORE = classifier_weights_BEFORE.squeeze(-1)
+
+    logger.cprint(f"------------ **BEFORE** Classifier Weights Learned:------------  \n {classifier_weights_BEFORE}")
     if args.model_checkpoint_path is not None:
         if args.method == 'finetune':
             model_checkpoint = torch.load(os.path.join(ROOT_DIR, args.model_checkpoint_path, 'checkpoint.tar'))
@@ -137,6 +169,7 @@ def main(args):
                     loaded_model_state_dict[k] = model_state_dict[k]
 
             model.load_state_dict(loaded_model_state_dict, strict=True)
+
         else:
             model = load_detection_model(model, args.model_checkpoint_path, model_name=args.model_name)
     else:
@@ -147,7 +180,7 @@ def main(args):
     # Reset numpy seed.
     # REF: https://github.com/pytorch/pytorch/issues/5059
     np.random.seed()
-    evaluate(args, model, test_dataloader, logger, device, DATASET_CONFIG)
+    evaluate(args, model, test_dataloader, logger, device, TEST_DATASET_CONFIG)
 
 
 if __name__ == '__main__':
