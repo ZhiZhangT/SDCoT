@@ -137,7 +137,7 @@ def main(args):
     TEST_DATASET_CONFIG = test_dataset.dataset_config
     TRAIN_DATASET_CONFIG = train_dataset.dataset_config
 
-    model = create_detection_model(args, TEST_DATASET_CONFIG)
+    model = create_detection_model(args, TRAIN_DATASET_CONFIG)
     classifier_weights_BEFORE = torch.empty_like(model.prediction_header.classifier_weights).copy_(
                                         model.prediction_header.classifier_weights.detach())
     classifier_weights_BEFORE = classifier_weights_BEFORE.squeeze(-1)
@@ -180,7 +180,7 @@ def main(args):
     # Reset numpy seed.
     # REF: https://github.com/pytorch/pytorch/issues/5059
     np.random.seed()
-    evaluate(args, model, test_dataloader, logger, device, TEST_DATASET_CONFIG)
+    evaluate(args, model, train_dataloader, logger, device, TRAIN_DATASET_CONFIG)
 
 
 if __name__ == '__main__':
