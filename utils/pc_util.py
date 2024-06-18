@@ -329,13 +329,21 @@ def bbox_corner_dist_measure(crnr1, crnr2):
     
     dist = sys.maxsize
     for y in range(4):
+
+        # jumble up the order of the corners of the boxes
         rows = ([(x+y)%4 for x in range(4)] + [4+(x+y)%4 for x in range(4)])
-        d_ = np.linalg.norm(crnr2[rows, :] - crnr1, axis=1).sum() / 8.0            
+
+        # compute Euclidean distance between corresponding corners of the two boxes
+        d_ = np.linalg.norm(crnr2[rows, :] - crnr1, axis=1).sum() / 8.0       
+
+        # update the minimum distance
         if d_ < dist:
             dist = d_
 
+    # calculate the normalization factor: the average of the Euclidean distance between the corners of the two boxes
     u = sum([np.linalg.norm(x[0,:] - x[6,:]) for x in [crnr1, crnr2]])/2.0
 
+    # calculate the measure: between 0 and 1
     measure = max(1.0 - dist/u, 0)
     print(measure)
     
