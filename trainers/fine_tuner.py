@@ -19,7 +19,7 @@ from loss_helper import get_supervised_loss
 
 
 class FineTuner(object):
-    def __init__(self, args, base_data_config, train_data_config, valid_data_config):
+    def __init__(self, args, base_data_config, train_data_config, valid_data_config, logger):
 
         self.train_data_config = train_data_config
         self.valid_data_config = valid_data_config
@@ -41,6 +41,9 @@ class FineTuner(object):
                                             self.model.prediction_header.classifier_weights.detach())
         self.classifier_weights_base = self.classifier_weights_base.squeeze(-1)
 
+        self.logger = logger
+        logger.cprint(f"------------ Classifier Weights Base:------------  \n {self.classifier_weights_base}")
+
         if args.ft_layers == 'last':
             self._freeze_detection_model(frozen_params=['backbone_net', 'vgen', 'pgen',
                                                         'prediction_header.regressor'])
@@ -50,10 +53,10 @@ class FineTuner(object):
             print('Unknown input for funetune_layers argument %s. Exiting...' % (args.ft_layers))
             exit(1)
 
-        print('------------ VoteNet parameters -------------')
+        logger.cprint('------------ VoteNet parameters -------------')
         for name, param in self.model.named_parameters():
-            print('{0} | trainable: {1}'.format(name, param.requires_grad))
-        print('---------------------------------------------\n')
+            logger.cprint('{0} | trainable: {1}'.format(name, param.requires_grad))
+        logger.cprint('---------------------------------------------\n')
 
         # random init last layer for class prediction
         self.init_classifier_weights_random(train_data_config.num_class)

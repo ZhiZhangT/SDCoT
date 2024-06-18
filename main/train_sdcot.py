@@ -116,7 +116,7 @@ def main(args, eval_interval=10):
     valid_dataloader = DataLoader(valid_dataset, batch_size=args.batch_size, shuffle=False,
                                   num_workers=3, worker_init_fn=my_worker_init_fn)
 
-    trainer = SDCoTTrainer(args, train_dataset.dataset_config, base_model_config)
+    trainer = SDCoTTrainer(args, train_dataset.dataset_config, base_model_config, logger)
 
     writer = SummaryWriter(log_dir=args.log_dir)
 

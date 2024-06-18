@@ -101,7 +101,7 @@ def main(args, eval_interval=10):
 
     NOVEL_DATA_CONFIG = train_dataset.dataset_config
     VAL_DATA_CONFIG = valid_dataset.dataset_config
-    trainer = FineTuner(args, BASE_DATA_CONFIG, NOVEL_DATA_CONFIG, VAL_DATA_CONFIG)
+    trainer = FineTuner(args, BASE_DATA_CONFIG, NOVEL_DATA_CONFIG, VAL_DATA_CONFIG, logger)
 
     writer = SummaryWriter(log_dir=args.log_dir)
 

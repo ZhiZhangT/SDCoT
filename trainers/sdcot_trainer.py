@@ -19,7 +19,7 @@ from loss_helper import get_supervised_loss, get_consistency_loss, get_distillat
 
 
 class SDCoTTrainer(object):
-    def __init__(self, args, data_config, base_data_config):
+    def __init__(self, args, data_config, base_data_config, logger):
 
         self.data_config = data_config
         self.ema_decay = args.ema_decay
@@ -40,6 +40,9 @@ class SDCoTTrainer(object):
         self.classifier_weights_base = torch.empty_like(self.model.prediction_header.classifier_weights).copy_(
                                             self.model.prediction_header.classifier_weights.detach())
         self.classifier_weights_base = self.classifier_weights_base.squeeze(-1)
+
+        self.logger = logger
+        logger.cprint(f"------------ Classifier Weights Base:------------  \n {self.classifier_weights_base}")
 
         # init last layer for class prediction
         self.init_classifier_weights(data_config.num_class_final)

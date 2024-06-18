@@ -12,7 +12,7 @@ import torch
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
-from eval_det import eval_det_cls, eval_det_multiprocessing
+from eval_det import eval_det_cls, eval_det_multiprocessing, eval_gt_acc
 from eval_det import get_iou_obb
 from nms import nms_2d_faster, nms_3d_faster, nms_3d_faster_samecls
 from box_util import get_3d_box, extract_pc_in_box3d, get_3d_box_depth
@@ -413,7 +413,10 @@ class APCalculator(object):
                 ret_dict['%s Recall'%(clsname)] = 0
                 rec_list.append(0)
         ret_dict['AR'] = np.mean(rec_list)
-        return ret_dict
+
+        gt_df = eval_gt_acc(self.pred_map_cls, self.gt_map_cls, ovthresh=self.ap_iou_thresh, get_iou_func=get_iou_obb)
+
+        return ret_dict, gt_df
 
     def reset(self):
         self.gt_map_cls = {} # {scan_id: [(classname, bbox)]}
