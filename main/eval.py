@@ -26,7 +26,7 @@ from ap_helper import APCalculator, parse_predictions, parse_groundtruths
 from train_bt import my_worker_init_fn
 
 
-def evaluate(args, model, dataloader, logger, device, dataset_config):
+def evaluate(args, model, dataloader, logger, device, dataset_config, dataset):
     logger.cprint(str(datetime.now()))
     # Used for AP calculation
     CONFIG_DICT = {'remove_empty_box': (not args.faster_eval), 'use_3d_nms': args.use_3d_nms,
@@ -76,8 +76,9 @@ def evaluate(args, model, dataloader, logger, device, dataset_config):
     for key in sorted(stat_dict.keys()):
         logger.cprint('eval mean %s: %f' % (key, stat_dict[key] / float(batch_idx + 1)))
 
-    # Evaluate average precision
-    metrics_dict, gt_df = ap_calculator.compute_metrics()
+    # Evaluate average precision and per-object accuracy
+    # Pass in the dataset so that we can map the img_id to the scan name
+    metrics_dict, gt_df = ap_calculator.compute_metrics(dataset)
     for key in metrics_dict:
         logger.cprint('eval %s: %f' % (key, metrics_dict[key]))
 
@@ -180,7 +181,7 @@ def main(args):
     # Reset numpy seed.
     # REF: https://github.com/pytorch/pytorch/issues/5059
     np.random.seed()
-    evaluate(args, model, test_dataloader, logger, device, TEST_DATASET_CONFIG)
+    evaluate(args, model, test_dataloader, logger, device, TEST_DATASET_CONFIG, test_dataset)
 
 
 if __name__ == '__main__':
