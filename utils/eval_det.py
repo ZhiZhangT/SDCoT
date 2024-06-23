@@ -270,13 +270,14 @@ def save_gt_pred_bboxes(gt_all, pred_all, img_id, save_dir):
     np.save(os.path.join(save_dir, f'{img_id}gt.npy'), gt)
     np.save(os.path.join(save_dir, f'{img_id}pred.npy'), pred)
 
-
-def eval_gt_acc(pred_all, gt_all, ovthresh=0.25, get_iou_func=get_iou):
+    
+def eval_gt_acc(pred_all, gt_all, dataset, ovthresh=0.25, get_iou_func=get_iou):
     """ Generic functions to check if there is a corresponding predicted bounding box for each ground truth bounding box.
         Input:
             pred_all: map of {img_id: [(classname, bbox, score)]}
             gt_all: map of {img_id: [(classname, bbox)]}
             ovthresh: scalar, iou threshold
+            dataset: Dataset object as defined in /datasets
         Output:
             results: {img_id: [(gt_bbox, pred_bbox, iou)]}
     """
@@ -322,10 +323,11 @@ def eval_gt_acc(pred_all, gt_all, ovthresh=0.25, get_iou_func=get_iou):
         for idx, (classname, gt_bbox, pred_bbox, iou) in enumerate(bboxes):
             data.append({
                 'img_id': img_id,
+                'scan_name': dataset.scan_names[img_id],
                 'classname': classnames[classname],
                 'gt_index': idx,
-                'has_pred_bbox': pred_bbox is not None
+                'has_pred_bbox': pred_bbox is not None,
             })
     
-    df = pd.DataFrame(data, columns=['img_id', 'classname', 'gt_index', 'has_pred_bbox'])
+    df = pd.DataFrame(data, columns=['img_id', 'scan_name', 'classname', 'gt_index', 'has_pred_bbox'])
     return df

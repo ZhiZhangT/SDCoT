@@ -1,0 +1,7 @@
+scannet
+venv
+pointnet2
+cfg
+log_scannet
+
+__pycache__

@@ -394,7 +394,7 @@ class APCalculator(object):
             self.pred_map_cls[self.scan_cnt] = batch_pred_map_cls[i] 
             self.scan_cnt += 1
     
-    def compute_metrics(self):
+    def compute_metrics(self, dataset):
         """ Use accumulated predictions and groundtruths to compute Average Precision.
         """
         rec, prec, ap = eval_det_multiprocessing(self.pred_map_cls, self.gt_map_cls, ovthresh=self.ap_iou_thresh, get_iou_func=get_iou_obb)
@@ -414,8 +414,7 @@ class APCalculator(object):
                 rec_list.append(0)
         ret_dict['AR'] = np.mean(rec_list)
 
-        # get the per-object accuracy:
-        gt_df = eval_gt_acc(self.pred_map_cls, self.gt_map_cls, ovthresh=self.ap_iou_thresh, get_iou_func=get_iou_obb)
+        gt_df = eval_gt_acc(self.pred_map_cls, self.gt_map_cls, ovthresh=self.ap_iou_thresh, get_iou_func=get_iou_obb, dataset=dataset)
 
         # save the bounding boxes for visualization:
         save_gt_pred_bboxes(self.pred_map_cls, self.gt_map_cls, img_id=7, save_dir='/gt_pred_bboxes')
