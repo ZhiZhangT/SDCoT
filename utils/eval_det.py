@@ -257,6 +257,20 @@ def eval_det_multiprocessing(pred_all, gt_all, ovthresh=0.25, use_07_metric=Fals
     
     return rec, prec, ap 
 
+# save a scene's gt and pred bboxes to .npy files
+def save_gt_pred_bboxes(gt_all, pred_all, img_id, save_dir):
+    gt = gt_all[img_id]
+    pred = pred_all[img_id]
+
+    print('GT and Pred Bboxes for image: ', img_id)
+    print("GT: \n", gt)
+    print("Pred: \n", pred)
+
+    print('Saving gt and pred bboxes to: ', save_dir)
+    np.save(os.path.join(save_dir, f'{img_id}gt.npy'), gt)
+    np.save(os.path.join(save_dir, f'{img_id}pred.npy'), pred)
+
+
 def eval_gt_acc(pred_all, gt_all, ovthresh=0.25, get_iou_func=get_iou):
     """ Generic functions to check if there is a corresponding predicted bounding box for each ground truth bounding box.
         Input:

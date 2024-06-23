@@ -239,12 +239,12 @@ class ScannetDataset(Dataset):
     def _process_one_scene(self, scan_name, scan_data_path, dataset_config):
         '''Process one scene/scan and return the corresponding point cloud and annotations
         '''
-        mesh_vertices = np.load(os.path.join(scan_data_path, scan_name) + '_vert.npy')
-        instance_labels = np.load(os.path.join(scan_data_path, scan_name) + '_ins_label.npy')
-        semantic_labels = np.load(os.path.join(scan_data_path, scan_name) + '_sem_label.npy')
-        instance_bboxes = np.load(os.path.join(scan_data_path, scan_name) + '_bbox.npy')
+        mesh_vertices = np.load(os.path.join(scan_data_path, scan_name) + '_vert.npy') # point clouds
+        instance_labels = np.load(os.path.join(scan_data_path, scan_name) + '_ins_label.npy') # label each point with an instance label:
+        semantic_labels = np.load(os.path.join(scan_data_path, scan_name) + '_sem_label.npy') # label each point with a semantic label: index of the class
+        instance_bboxes = np.load(os.path.join(scan_data_path, scan_name) + '_bbox.npy') # gt bounding boxes for each scene
 
-        bbox_mask = np.in1d(instance_bboxes[:, -1], dataset_config.nyu40ids)
+        bbox_mask = np.in1d(instance_bboxes[:, -1], dataset_config.nyu40ids) # there is a conversion between nyu40ids (set of pre-defined indexes from another index) and class ids, which happens in the config file
         instance_bboxes = instance_bboxes[bbox_mask, :]
 
         point_cloud = self._process_pointcloud(mesh_vertices)

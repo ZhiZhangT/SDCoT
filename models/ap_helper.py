@@ -12,7 +12,7 @@ import torch
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
-from eval_det import eval_det_cls, eval_det_multiprocessing, eval_gt_acc
+from eval_det import eval_det_cls, eval_det_multiprocessing, eval_gt_acc, save_gt_pred_bboxes
 from eval_det import get_iou_obb
 from nms import nms_2d_faster, nms_3d_faster, nms_3d_faster_samecls
 from box_util import get_3d_box, extract_pc_in_box3d, get_3d_box_depth
@@ -414,7 +414,11 @@ class APCalculator(object):
                 rec_list.append(0)
         ret_dict['AR'] = np.mean(rec_list)
 
+        # get the per-object accuracy:
         gt_df = eval_gt_acc(self.pred_map_cls, self.gt_map_cls, ovthresh=self.ap_iou_thresh, get_iou_func=get_iou_obb)
+
+        # save the bounding boxes for visualization:
+        save_gt_pred_bboxes(self.pred_map_cls, self.gt_map_cls, img_id=7, save_dir='/gt_pred_bboxes')
 
         return ret_dict, gt_df
 
