@@ -180,7 +180,7 @@ def main(args):
 
     # Reset numpy seed.
     # REF: https://github.com/pytorch/pytorch/issues/5059
-    np.random.seed()
+    np.random.seed(123)
     evaluate(args, model, test_dataloader, logger, device, TEST_DATASET_CONFIG, test_dataset)
 
 

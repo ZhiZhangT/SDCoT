@@ -21,6 +21,7 @@
 """
 import numpy as np
 import pandas as pd
+import os
 
 
 def voc_ap(rec, prec, use_07_metric=False):
@@ -268,12 +269,24 @@ def save_gt_pred_bboxes(gt_all, pred_all, dataset, img_id, save_dir):
     print("GT: \n", gt)
     print("Pred: \n", pred)
 
-    print('Saving gt and pred bboxes to: ', save_dir)
-    np.save(os.path.join(save_dir, f'{scanname}_gt.npy'), gt)
-    np.save(os.path.join(save_dir, f'{scanname}_pred.npy'), pred)
+    # Unpacking gt and pred correctly
+    try:
+        gt_bboxes = [{'class': cls, 'bbox': bbox.tolist()} for cls, bbox in gt]
+        pred_bboxes = [{'class': cls, 'bbox': bbox.tolist()} for cls, bbox in pred]
+    except ValueError as e:
+        print("Error unpacking GT or Pred items:", e)
+        # Fallback in case of incorrect structure
+        gt_bboxes = [{'class': item[0], 'bbox': item[1].tolist()} for item in gt]
+        pred_bboxes = [{'class': item[0], 'bbox': item[1].tolist()} for item in pred]
 
+    print('Saving gt and pred bboxes to: ', save_dir)
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
+
+    np.save(os.path.join(save_dir, f'{scanname}_gt.npy'), gt_bboxes)
+    np.save(os.path.join(save_dir, f'{scanname}_pred.npy'), pred_bboxes)
     
-def eval_gt_acc(pred_all, gt_all, dataset, ovthresh=0.25, get_iou_func=get_iou):
+def eval_gt_acc(pred_all, gt_all, dataset, img_id_to_check, save_dir, ovthresh=0.25, get_iou_func=get_iou):
     """ Generic functions to check if there is a corresponding predicted bounding box for each ground truth bounding box.
         Input:
             pred_all: map of {img_id: [(classname, bbox, score)]}
@@ -330,6 +343,17 @@ def eval_gt_acc(pred_all, gt_all, dataset, ovthresh=0.25, get_iou_func=get_iou):
                 'gt_index': idx,
                 'has_pred_bbox': pred_bbox is not None,
             })
+
+        if len(bboxes) < 5:
+            scan_name= dataset.scan_names[img_id]
+            gt_bboxes = [{'class': classname, 'bbox': gt_bbox, 'idx': idx,} for idx, (classname, gt_bbox, pred_bbox, iou) in enumerate(bboxes)]
+            pred_bboxes = [{'class': classname, 'bbox': pred_bbox, 'idx': idx,} for idx, (classname, gt_bbox, pred_bbox, iou) in enumerate(bboxes)]
+            print('Saving gt and pred bboxes to: ', save_dir)
+            if not os.path.exists(save_dir):
+                os.makedirs(save_dir)
+
+            np.save(os.path.join(save_dir, f'{scan_name}_gt.npy'), gt_bboxes)
+            np.save(os.path.join(save_dir, f'{scan_name}_pred.npy'), pred_bboxes)
     
     df = pd.DataFrame(data, columns=['img_id', 'scan_name', 'classname', 'gt_index', 'has_pred_bbox'])
     return df
