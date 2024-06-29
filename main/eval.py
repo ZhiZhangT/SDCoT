@@ -9,7 +9,10 @@ import sys
 import numpy as np
 from datetime import datetime
 import torch
-from torch.utils.data import DataLoader
+import torch.backends
+import torch.backends.cudnn
+from torch.utils.data import DataLoader, SequentialSampler
+import random
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
@@ -20,7 +23,7 @@ sys.path.append(os.path.join(ROOT_DIR, 'models'))
 sys.path.append(os.path.join(ROOT_DIR, 'trainers'))
 from opts import parse_args
 from logger import init_logger
-from model import create_detection_model, load_detection_model
+from model import create_detection_model, load_detection_model, generate_pseudo_bboxes
 from loss_helper import get_supervised_loss
 from ap_helper import APCalculator, parse_predictions, parse_groundtruths
 from train_bt import my_worker_init_fn
@@ -28,12 +31,14 @@ from train_bt import my_worker_init_fn
 
 def evaluate(args, model, dataloader, logger, device, dataset_config, dataset):
     logger.cprint(str(datetime.now()))
+    
     # Used for AP calculation
     CONFIG_DICT = {'remove_empty_box': (not args.faster_eval), 'use_3d_nms': args.use_3d_nms,
                    'nms_iou': args.nms_iou, 'use_old_type_nms': args.use_old_type_nms,
                    'cls_nms': args.use_cls_nms, 'per_class_proposal': args.per_class_proposal,
-                   'conf_thresh': float(args.conf_thresh), 'dataset_config': dataset_config}
-
+                   'conf_thresh': float(args.conf_thresh), 'dataset_config': dataset_config,
+                   'obj_conf_thresh': 0.95, 'cls_conf_thresh': 0.95}
+    
     ap_calculator = APCalculator(float(args.ap_iou_threshold), dataset_config.class2type)
 
     stat_dict = {}
@@ -91,11 +96,36 @@ def evaluate(args, model, dataloader, logger, device, dataset_config, dataset):
     # Save DataFrame as CSV
     csv_file_path = 'gt_df_results.csv'
     gt_df.to_csv(csv_file_path, index=False)
+    
+    logger.cprint(f"------------ Saving pseudo bboxes: ------------: \n")
+    point_cloud = dataset[46]['point_clouds']
+    scan_name = dataset.scan_names[46]
+    
+    pseudo_bboxes = generate_pseudo_bboxes(model, device, CONFIG_DICT, point_cloud)
+    
+    # Save pseudo_bboxes
+    save_dir = "pseudo_bboxes_npy"
+    logger.cprint('Saving gt and pred bboxes to: ' + save_dir)
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
+
+    np.save(os.path.join(save_dir, f'{scan_name}_pseudo_bboxes_0.95.npy'), pseudo_bboxes)
 
 
 def main(args):
     logger = init_logger(args)
-
+    
+    # Initialise seed to control randomness:
+    '''
+    seed = 123
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.backends.cudnn.deterministic=True
+    torch.backends.cudnn.benchmark=False
+    np.random.seed(seed)
+    random.seed(seed)
+    '''
+    
     # ======== Init Dataset =========
     if args.method == 'basetrain':
         EVAL_ALL_CLASS = False
@@ -119,6 +149,7 @@ def main(args):
                                          use_color=args.use_color,
                                          use_height=(not args.no_height),
                                          augment=False)
+        print(test_dataset.scan_names)
         
         from scannet_base import ScannetBaseDataset
         train_dataset = ScannetBaseDataset(num_points=args.num_point,
@@ -128,12 +159,20 @@ def main(args):
     else:
         print('Unknown dataset %s. Exiting...' % (args.dataset))
         exit(-1)
-
+        
+    # Initialise a sequential sampler for the datasloaders
+    test_seq_sampler = SequentialSampler(test_dataset)
+    train_seq_sampler = SequentialSampler(train_dataset)
+    
+    print("Batch Size used: ", args.batch_size)
+    
     test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False,
-                                  num_workers=args.batch_size//2, worker_init_fn=my_worker_init_fn)
+                                  num_workers=0, worker_init_fn=my_worker_init_fn,
+                                  sampler=test_seq_sampler)
     
     train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=False,
-                                  num_workers=args.batch_size//2, worker_init_fn=my_worker_init_fn)
+                                  num_workers=args.batch_size//2, worker_init_fn=my_worker_init_fn,
+                                  sampler=train_seq_sampler)
     
     TEST_DATASET_CONFIG = test_dataset.dataset_config
     TRAIN_DATASET_CONFIG = train_dataset.dataset_config
@@ -180,7 +219,7 @@ def main(args):
 
     # Reset numpy seed.
     # REF: https://github.com/pytorch/pytorch/issues/5059
-    np.random.seed(123)
+    # np.random.seed(123)
     evaluate(args, model, test_dataloader, logger, device, TEST_DATASET_CONFIG, test_dataset)
 
 
