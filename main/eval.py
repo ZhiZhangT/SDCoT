@@ -116,7 +116,7 @@ def main(args):
     logger = init_logger(args)
     
     # Initialise seed to control randomness:
-    '''
+    
     seed = 123
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
@@ -124,7 +124,7 @@ def main(args):
     torch.backends.cudnn.benchmark=False
     np.random.seed(seed)
     random.seed(seed)
-    '''
+    
     
     # ======== Init Dataset =========
     if args.method == 'basetrain':
@@ -159,20 +159,14 @@ def main(args):
     else:
         print('Unknown dataset %s. Exiting...' % (args.dataset))
         exit(-1)
-        
-    # Initialise a sequential sampler for the datasloaders
-    test_seq_sampler = SequentialSampler(test_dataset)
-    train_seq_sampler = SequentialSampler(train_dataset)
     
     print("Batch Size used: ", args.batch_size)
     
     test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False,
-                                  num_workers=0, worker_init_fn=my_worker_init_fn,
-                                  sampler=test_seq_sampler)
+                                  num_workers=args.batch_size//2, worker_init_fn=my_worker_init_fn,)
     
     train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=False,
-                                  num_workers=args.batch_size//2, worker_init_fn=my_worker_init_fn,
-                                  sampler=train_seq_sampler)
+                                  num_workers=args.batch_size//2, worker_init_fn=my_worker_init_fn,)
     
     TEST_DATASET_CONFIG = test_dataset.dataset_config
     TRAIN_DATASET_CONFIG = train_dataset.dataset_config
@@ -219,7 +213,8 @@ def main(args):
 
     # Reset numpy seed.
     # REF: https://github.com/pytorch/pytorch/issues/5059
-    # np.random.seed(123)
+    
+    np.random.seed(seed)
     evaluate(args, model, test_dataloader, logger, device, TEST_DATASET_CONFIG, test_dataset)
 
 

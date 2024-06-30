@@ -296,64 +296,69 @@ def eval_gt_acc(pred_all, gt_all, dataset, img_id_to_check, save_dir, ovthresh=0
         Output:
             results: {img_id: [(gt_bbox, pred_bbox, iou)]}
     """
-    pred = {} # map {img_id: {classname: [ (bbox, score) ] } }
-    gt = {} # map {img_id: {classname: [ bbox ] } }
+    pred = {} # map {img_id: {classname: [ (bbox, score, idx) ] } }
+    gt = {} # map {img_id: {classname: [ bbox, idx ] } }
     
     for img_id in pred_all.keys():
         pred[img_id] = {}
-        for classname, bbox, score in pred_all[img_id]:
+        for idx, (classname, bbox, score) in enumerate(pred_all[img_id]):
             if classname not in pred[img_id]:
                 pred[img_id][classname] = []
-            pred[img_id][classname].append((bbox, score))
+            pred[img_id][classname].append((bbox, score, idx))
     
     for img_id in gt_all.keys():
         gt[img_id] = {}
-        for classname, bbox in gt_all[img_id]:
+        for idx, (classname, bbox) in enumerate(gt_all[img_id]):
             if classname not in gt[img_id]:
                 gt[img_id][classname] = []
-            gt[img_id][classname].append(bbox)
+            gt[img_id][classname].append((bbox, idx))
 
-    results = {} # map {img_id: [gt_bbox, best_pred_bbox, max_iou] }
+    results = {} # map {img_id: [gt_bbox, best_pred_bbox, max_iou, gt_bbox_idx, best_pred_bbox_idx] }
 
     for img_id in gt.keys(): # iterate through each image file
         results[img_id] = []
+        
         for classname in gt[img_id].keys(): # iterate all through each class present in the image, according to GT
             gt_boxes = gt[img_id][classname] # get all the GT bboxes of a class in the image
             pred_boxes = pred.get(img_id, {}).get(classname, []) # get all the predicted bboxes of a class in the image
-            for gt_bbox in gt_boxes: # iterate through each GT bbox in the image
+            
+            for (gt_bbox, gt_bbox_idx) in gt_boxes: # iterate through each GT bbox in the image
                 max_iou = 0
                 best_pred_bbox = None
-                for pred_bbox, score in pred_boxes: # iterate through each predicted bbox in the image
+                best_pred_bbox_idx = None
+                
+                for (pred_bbox, score, pred_bbox_idx) in pred_boxes: # iterate through each predicted bbox in the image
                     iou = get_iou_func(gt_bbox, pred_bbox) # get the IoU for each pair of bbox for a class between GT and predicted (if any)
                     if iou > ovthresh and iou > max_iou: # check if iou meets the threshold to be accepted, and updates the best predicted bbox if score is highest
                         max_iou = iou
                         best_pred_bbox = pred_bbox
-                results[img_id].append((classname, gt_bbox, best_pred_bbox, max_iou)) # appends result for a GT bbox in the image
+                        best_pred_bbox_idx = pred_bbox_idx
+                        
+                results[img_id].append((classname, gt_bbox, best_pred_bbox, max_iou, gt_bbox_idx, best_pred_bbox_idx)) # appends result for a GT bbox in the image
     
     data = []
     classnames = ['bathtub', 'bed', 'bookshelf', 'cabinet', 'chair', 'counter', 'curtain', 'desk', 'door', 'otherfurniture',
                       'picture', 'refrigerator', 'showercurtain', 'sink', 'sofa', 'table', 'toilet', 'window']
     
     for img_id, bboxes in results.items():
-        for idx, (classname, gt_bbox, pred_bbox, iou) in enumerate(bboxes):
+        for classname, gt_bbox, pred_bbox, iou, gt_bbox_idx, best_pred_bbox_idx in bboxes:
             data.append({
                 'img_id': img_id,
                 'scan_name': dataset.scan_names[img_id],
                 'classname': classnames[classname],
-                'gt_index': idx,
-                'has_pred_bbox': pred_bbox is not None,
+                'gt_bbox_index': int(gt_bbox_idx),
+                'pred_bbox_index':int(best_pred_bbox_idx) if best_pred_bbox_idx is not None else None
             })
 
-        if len(bboxes) < 5:
-            scan_name= dataset.scan_names[img_id]
-            gt_bboxes = [{'class': classname, 'bbox': gt_bbox, 'idx': idx,} for idx, (classname, gt_bbox, pred_bbox, iou) in enumerate(bboxes)]
-            pred_bboxes = [{'class': classname, 'bbox': pred_bbox, 'idx': idx,} for idx, (classname, gt_bbox, pred_bbox, iou) in enumerate(bboxes)]
-            print('Saving gt and pred bboxes to: ', save_dir)
-            if not os.path.exists(save_dir):
-                os.makedirs(save_dir)
+        scan_name= dataset.scan_names[img_id]
+        gt_bboxes = [{'class': classname, 'bbox': gt_bbox, 'gt_bbox_index': gt_bbox_idx,} for (classname, gt_bbox, best_pred_bbox, iou, gt_bbox_idx, best_pred_bbox_idx) in bboxes]
+        pred_bboxes = [{'class': classname, 'bbox': pred_bbox, 'gt_bbox_index': gt_bbox_idx, 'pred_bbox_index': pred_bbox_idx,} for idx, (classname, gt_bbox, best_pred_bbox, iou, gt_bbox_idx, best_pred_bbox_idx) in enumerate(bboxes)]
+        print('Saving gt and pred bboxes to: ', save_dir)
+        if not os.path.exists(save_dir):
+            os.makedirs(save_dir)
 
-            np.save(os.path.join(save_dir, f'{scan_name}_gt.npy'), gt_bboxes)
-            np.save(os.path.join(save_dir, f'{scan_name}_pred.npy'), pred_bboxes)
+        np.save(os.path.join(save_dir, f'{scan_name}_gt.npy'), gt_bboxes)
+        np.save(os.path.join(save_dir, f'{scan_name}_pred.npy'), pred_bboxes)
     
-    df = pd.DataFrame(data, columns=['img_id', 'scan_name', 'classname', 'gt_index', 'has_pred_bbox'])
+    df = pd.DataFrame(data, columns=['img_id', 'scan_name', 'classname', 'gt_bbox_index', 'pred_bbox_index'])
     return df

@@ -7,7 +7,7 @@ Date: Oct, 2020
 """
 
 import os
-from models.model import load_detection_model
+# from models.model import load_detection_model
 from scannet import ScannetBaseDatasetConfig, ScannetAllDatasetConfig, ScannetDataset
 
 
@@ -16,9 +16,11 @@ class ScannetValDataset(ScannetDataset):
                        use_color=False, use_height=False, augment=False):
         super(ScannetValDataset, self).__init__(num_points, use_color, use_height, augment)
 
+        print(f"VALIDATION_DATA_PATH: {self.val_data_path}")
+        
         self.scan_names = sorted(list(set([os.path.basename(x)[0:12] \
                                     for x in os.listdir(self.val_data_path) if x.startswith('scene')])))    # sorting the list to ensure reproducibility of index-scan_name mapping
-    
+        
         if all_classes:
             # construct validation dataset for evaluating the performance on both base and novel classes (incremental learning)
             self.dataset_config = ScannetAllDatasetConfig(num_novel_class)
