@@ -1307,7 +1307,7 @@ img_id,scan_name,classname,gt_index,has_pred_bbox,spatial_zone
 153,scene0277_00,cabinet,3,True,3
 153,scene0277_00,door,4,True,3
 154,scene0575_02,chair,0,True,3
-154,scene0575_02,chair,1,True,2
+154,scene0575_02,chair,1,True,3
 154,scene0575_02,chair,2,True,2
 154,scene0575_02,chair,3,True,2
 154,scene0575_02,chair,4,True,4
@@ -1738,7 +1738,7 @@ img_id,scan_name,classname,gt_index,has_pred_bbox,spatial_zone
 207,scene0591_00,desk,7,True,4
 207,scene0591_00,desk,8,True,4
 207,scene0591_00,door,9,True,3
-207,scene0591_00,bookshelf,10,True,3
+207,scene0591_00,bookshelf,10,True,4
 208,scene0084_00,door,0,True,3
 208,scene0084_00,door,1,True,2
 208,scene0084_00,counter,2,True,2
@@ -2189,7 +2189,7 @@ img_id,scan_name,classname,gt_index,has_pred_bbox,spatial_zone
 260,scene0644_00,chair,10,True,3
 260,scene0644_00,chair,11,True,4
 260,scene0644_00,cabinet,12,True,3
-260,scene0644_00,cabinet,13,False,4
+260,scene0644_00,cabinet,13,False,3
 260,scene0644_00,door,14,True,4
 261,scene0598_00,bookshelf,0,True,4
 261,scene0598_00,chair,1,True,3
@@ -2311,7 +2311,7 @@ img_id,scan_name,classname,gt_index,has_pred_bbox,spatial_zone
 274,scene0552_00,chair,2,True,2
 274,scene0552_00,chair,3,True,2
 274,scene0552_00,chair,4,True,2
-274,scene0552_00,chair,5,True,3
+274,scene0552_00,chair,5,True,4
 274,scene0552_00,chair,6,True,2
 274,scene0552_00,cabinet,7,True,2
 274,scene0552_00,cabinet,8,True,4
@@ -2450,7 +2450,7 @@ img_id,scan_name,classname,gt_index,has_pred_bbox,spatial_zone
 288,scene0663_00,cabinet,7,False,4
 288,scene0663_00,cabinet,8,True,4
 289,scene0647_00,chair,0,True,4
-289,scene0647_00,door,1,False,2
+289,scene0647_00,door,1,False,3
 289,scene0647_00,door,2,True,3
 290,scene0568_01,chair,0,True,3
 290,scene0568_01,chair,1,False,4

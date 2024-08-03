@@ -90,26 +90,26 @@ def evaluate(args, model, dataloader, logger, device, dataset_config, dataset):
     logger.cprint(f"------------ Ground Truths Dataframe: ------------: \n")
     logger.cprint("Columns: ")
     # Print each row of gt_df
-    for index, row in gt_df.iterrows():
-        logger.cprint(str(row))
+    # for index, row in gt_df.iterrows():
+    #     logger.cprint(str(row))
 
     # Save DataFrame as CSV
     csv_file_path = 'gt_df_results.csv'
     gt_df.to_csv(csv_file_path, index=False)
     
-    logger.cprint(f"------------ Saving pseudo bboxes: ------------: \n")
-    point_cloud = dataset[46]['point_clouds']
-    scan_name = dataset.scan_names[46]
+    # logger.cprint(f"------------ Saving pseudo bboxes: ------------: \n")
+    # point_cloud = dataset[46]['point_clouds']
+    # scan_name = dataset.scan_names[46]
     
-    pseudo_bboxes = generate_pseudo_bboxes(model, device, CONFIG_DICT, point_cloud)
+    # pseudo_bboxes = generate_pseudo_bboxes(model, device, CONFIG_DICT, point_cloud)
     
-    # Save pseudo_bboxes
-    save_dir = "pseudo_bboxes_npy"
-    logger.cprint('Saving gt and pred bboxes to: ' + save_dir)
-    if not os.path.exists(save_dir):
-        os.makedirs(save_dir)
+    # # Save pseudo_bboxes
+    # save_dir = "pseudo_bboxes_npy"
+    # logger.cprint('Saving gt and pred bboxes to: ' + save_dir)
+    # if not os.path.exists(save_dir):
+    #     os.makedirs(save_dir)
 
-    np.save(os.path.join(save_dir, f'{scan_name}_pseudo_bboxes_0.95.npy'), pseudo_bboxes)
+    # np.save(os.path.join(save_dir, f'{scan_name}_pseudo_bboxes_0.95.npy'), pseudo_bboxes)
 
 
 def main(args):

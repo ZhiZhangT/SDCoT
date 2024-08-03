@@ -279,12 +279,12 @@ def save_gt_pred_bboxes(gt_all, pred_all, dataset, img_id, save_dir):
         gt_bboxes = [{'class': item[0], 'bbox': item[1].tolist()} for item in gt]
         pred_bboxes = [{'class': item[0], 'bbox': item[1].tolist()} for item in pred]
 
-    print('Saving gt and pred bboxes to: ', save_dir)
-    if not os.path.exists(save_dir):
-        os.makedirs(save_dir)
+    # print('Saving gt and pred bboxes to: ', save_dir)
+    # if not os.path.exists(save_dir):
+    #     os.makedirs(save_dir)
 
-    np.save(os.path.join(save_dir, f'{scanname}_gt.npy'), gt_bboxes)
-    np.save(os.path.join(save_dir, f'{scanname}_pred.npy'), pred_bboxes)
+    # np.save(os.path.join(save_dir, f'{scanname}_gt.npy'), gt_bboxes)
+    # np.save(os.path.join(save_dir, f'{scanname}_pred.npy'), pred_bboxes)
     
 def eval_gt_acc(pred_all, gt_all, dataset, img_id_to_check, save_dir, ovthresh=0.25, get_iou_func=get_iou):
     """ Generic functions to check if there is a corresponding predicted bounding box for each ground truth bounding box.
@@ -320,7 +320,7 @@ def eval_gt_acc(pred_all, gt_all, dataset, img_id_to_check, save_dir, ovthresh=0
         
         for classname in gt[img_id].keys(): # iterate all through each class present in the image, according to GT
             gt_boxes = gt[img_id][classname] # get all the GT bboxes of a class in the image
-            pred_boxes = pred.get(img_id, {}).get(classname, []) # get all the predicted bboxes of a class in the image
+            pred_boxes = pred[img_id].get(classname, []) # get all the predicted bboxes of a class in the image
             
             for (gt_bbox, gt_bbox_idx) in gt_boxes: # iterate through each GT bbox in the image
                 max_iou = 0

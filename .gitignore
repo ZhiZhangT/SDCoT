@@ -3,5 +3,6 @@ venv
 pointnet2
 cfg
 log_scannet
+val_bboxes
 
 __pycache__
