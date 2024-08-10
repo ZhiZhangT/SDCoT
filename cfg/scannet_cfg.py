@@ -44,9 +44,9 @@ __C.NUM_HEADING_BIN = 1 #Object bboxes are alix-aligned in ScanNet
 __C.MAX_NUM_OBJ = 64 # maximum number of objects allowed per scene
 __C.MEAN_COLOR_RGB = np.array([109.8, 97.2, 83.8])
 
-__C.NUM_BASE_CLASSES = 18
-__C.BASE_TYPES = ['bathtub', 'bed', 'bookshelf', 'cabinet', 'chair', 'counter', 'curtain', 'desk', 'door','otherfurniture', 'picture', 'refrigerator', 'showercurtain', 'sink', 'sofa', 'table', 'toilet', 'window']
-__C.BASE_NYUIDS = np.array([36, 4, 10, 3, 5, 12, 16, 14, 8, 39, 11, 24, 28, 34, 6, 7, 33, 9])
+__C.NUM_BASE_CLASSES = 9
+__C.BASE_TYPES = ['bathtub', 'bed', 'bookshelf', 'cabinet', 'chair', 'counter', 'curtain', 'desk', 'door',]
+__C.BASE_NYUIDS = np.array([36, 4, 10, 3, 5, 12, 16, 14, 8])
 
 __C.NUM_NOVEL_CLASSES = 9
 __C.NOVEL_TYPES = ['otherfurniture', 'picture', 'refrigerator', 'showercurtain', 'sink', 'sofa', 'table', 'toilet', 'window']
