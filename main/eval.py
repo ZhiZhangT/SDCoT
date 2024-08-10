@@ -88,13 +88,12 @@ def evaluate(args, model, dataloader, logger, device, dataset_config, dataset):
         logger.cprint('eval %s: %f' % (key, metrics_dict[key]))
 
     logger.cprint(f"------------ Ground Truths Dataframe: ------------: \n")
-    logger.cprint("Columns: ")
     # Print each row of gt_df
     # for index, row in gt_df.iterrows():
     #     logger.cprint(str(row))
 
     # Save DataFrame as CSV
-    csv_file_path = 'gt_df_results.csv'
+    csv_file_path = f'gt_df_results_{str(datetime.now())}.csv'
     gt_df.to_csv(csv_file_path, index=False)
     
     # logger.cprint(f"------------ Saving pseudo bboxes: ------------: \n")

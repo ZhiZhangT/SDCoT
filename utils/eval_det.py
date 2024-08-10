@@ -353,12 +353,13 @@ def eval_gt_acc(pred_all, gt_all, dataset, img_id_to_check, save_dir, ovthresh=0
         scan_name= dataset.scan_names[img_id]
         gt_bboxes = [{'class': classname, 'bbox': gt_bbox, 'gt_bbox_index': gt_bbox_idx,} for (classname, gt_bbox, best_pred_bbox, iou, gt_bbox_idx, best_pred_bbox_idx) in bboxes]
         pred_bboxes = [{'class': classname, 'bbox': pred_bbox, 'gt_bbox_index': gt_bbox_idx, 'pred_bbox_index': pred_bbox_idx,} for idx, (classname, gt_bbox, best_pred_bbox, iou, gt_bbox_idx, best_pred_bbox_idx) in enumerate(bboxes)]
+        '''
         print('Saving gt and pred bboxes to: ', save_dir)
         if not os.path.exists(save_dir):
             os.makedirs(save_dir)
 
         np.save(os.path.join(save_dir, f'{scan_name}_gt.npy'), gt_bboxes)
         np.save(os.path.join(save_dir, f'{scan_name}_pred.npy'), pred_bboxes)
-    
+        '''
     df = pd.DataFrame(data, columns=['img_id', 'scan_name', 'classname', 'gt_bbox_index', 'pred_bbox_index'])
     return df

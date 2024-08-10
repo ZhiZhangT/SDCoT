@@ -81,7 +81,7 @@ def evaluate_one_epoch(trainer, dataloader, ap_calculator, logger, config_dict, 
         stat_dict[key] = 0
 
     # Evaluate average precision
-    metrics_dict = ap_calculator.compute_metrics()
+    metrics_dict, gt_df = ap_calculator.compute_metrics(dataset=dataloader.dataset)
     for key in metrics_dict:
         logger.cprint('eval %s: %f' % (key, metrics_dict[key]))
 
