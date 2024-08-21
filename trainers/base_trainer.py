@@ -72,7 +72,7 @@ class BaseTrainer(object):
         for key in batch_data_label:
             assert (key not in end_points)
             end_points[key] = batch_data_label[key]
-        loss, end_points = get_supervised_loss(end_points, self.dataset_config)
+        loss, end_points = get_supervised_loss(end_points, self.dataset_config, sela=True)
         loss.backward()
         self.optimizer.step()
 
@@ -90,5 +90,5 @@ class BaseTrainer(object):
         for key in batch_data_label:
             assert (key not in end_points)
             end_points[key] = batch_data_label[key]
-        loss, end_points = get_supervised_loss(end_points, self.dataset_config)
+        loss, end_points = get_supervised_loss(end_points, self.dataset_config, sela=True)
         return end_points

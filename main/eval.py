@@ -65,7 +65,7 @@ def evaluate(args, model, dataloader, logger, device, dataset_config, dataset):
         for key in batch_data_label:
             assert (key not in end_points)
             end_points[key] = batch_data_label[key]
-        loss, end_points = get_supervised_loss(end_points, dataset_config)
+        loss, end_points = get_supervised_loss(end_points, dataset_config, sela=True) # Set to True for testing purposes, should be False.
 
         # Accumulate statistics and print out
         for key in end_points:
