@@ -110,7 +110,7 @@ class SDCoTTrainer(object):
             assert (key not in end_points)
             end_points[key] = batch_data_label[key]
 
-        supervised_loss, end_points = get_supervised_loss(end_points, self.data_config)
+        supervised_loss, end_points = get_supervised_loss(end_points, self.data_config, sela=True)
         consistency_loss, end_points = get_consistency_loss(end_points, ema_end_points, self.data_config)
         distillation_loss, end_points = get_distillation_loss(end_points, reference_end_points)
         loss = supervised_loss + consistency_weight*consistency_loss + distillation_weight*distillation_loss

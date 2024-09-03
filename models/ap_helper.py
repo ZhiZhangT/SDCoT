@@ -9,14 +9,16 @@ import os
 import sys
 import numpy as np
 import torch
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
 from eval_det import eval_det_cls, eval_det_multiprocessing, eval_gt_acc, save_gt_pred_bboxes
 from eval_det import get_iou_obb
-from nms import nms_2d_faster, nms_3d_faster, nms_3d_faster_samecls
+from nms import nms_2d_faster, nms_2d_faster_sela,  nms_3d_faster, nms_3d_faster_samecls, nms_3d_faster_sela, nms_3d_faster_samecls_sela
 from box_util import get_3d_box, extract_pc_in_box3d, get_3d_box_depth
 from model_util import class2size, class2angle
+from models.sela import calculate_alpha
 
 
 def flip_axis_to_camera(pc):
@@ -41,8 +43,7 @@ def softmax(x):
     probs /= np.sum(probs, axis=len(shape)-1, keepdims=True)
     return probs
 
-
-def parse_prediction_to_pseudo_bboxes(end_points, config_dict, point_clouds):
+def parse_prediction_to_pseudo_bboxes(end_points, config_dict, point_clouds, sela=True):
     """ Parse predictions to OBB parameters and suppress overlapping boxes
 
     Args:
@@ -91,6 +92,11 @@ def parse_prediction_to_pseudo_bboxes(end_points, config_dict, point_clouds):
         pred_size[i] = box_size
 
     nonempty_box_mask = np.ones((K))
+    
+    if sela:
+        end_points['point_clouds'] = point_clouds
+        print("Shape of point clouds", point_clouds.shape)
+        alpha = calculate_alpha(end_points)
 
     if config_dict['remove_empty_box']:
         # -------------------------------------
@@ -134,7 +140,12 @@ def parse_prediction_to_pseudo_bboxes(end_points, config_dict, point_clouds):
             boxes_3d_with_prob[i, 5] = np.max(pred_corners_3d_depth[i, :, 2])
             boxes_3d_with_prob[i, 6] = obj_prob[i]
         nonempty_box_inds = np.where(nonempty_box_mask == 1)[0]
-        pick = nms_3d_faster(boxes_3d_with_prob[nonempty_box_mask == 1, :],
+        
+        if sela:
+            pick = nms_3d_faster_sela(boxes_3d_with_prob[nonempty_box_mask == 1, :],
+                                      config_dict['nms_iou'], alpha[0], config_dict['use_old_type_nms'])
+        else:
+            pick = nms_3d_faster(boxes_3d_with_prob[nonempty_box_mask == 1, :],
                              config_dict['nms_iou'], config_dict['use_old_type_nms'])
         assert (len(pick) > 0)
         pred_mask[nonempty_box_inds[pick]] = 1
@@ -181,7 +192,7 @@ def parse_prediction_to_pseudo_bboxes(end_points, config_dict, point_clouds):
         return pred_bboxes
 
 
-def parse_predictions(end_points, config_dict):
+def parse_predictions(end_points, config_dict, sela=True):
     """ Parse predictions to OBB parameters and suppress overlapping boxes
     
     Args:
@@ -190,6 +201,8 @@ def parse_predictions(end_points, config_dict):
         config_dict: dict
             {dataset_config, remove_empty_box, use_3d_nms, nms_iou,
             use_old_type_nms, conf_thresh, per_class_proposal}
+        sela: bool
+            To use spatial equilibrium NMS with dynamic IoU thresholds or not
 
     Returns:
         batch_pred_map_cls: a list of len == batch size (BS)
@@ -225,6 +238,9 @@ def parse_predictions(end_points, config_dict):
 
     K = pred_center.shape[1] # K==num_proposal
     nonempty_box_mask = np.ones((bsize, K))
+    
+    if sela:
+        alpha = calculate_alpha(end_points)
 
     if config_dict['remove_empty_box']:
         # -------------------------------------
@@ -242,7 +258,7 @@ def parse_predictions(end_points, config_dict):
 
     obj_logits = end_points['objectness_scores'].detach().cpu().numpy()
     obj_prob = softmax(obj_logits)[:,:,1] # (B,K)
-    if not config_dict['use_3d_nms']:
+    if not config_dict['use_3d_nms']:   
         # ---------- NMS input: pred_with_prob in (B,K,7) -----------
         pred_mask = np.zeros((bsize, K))
         for i in range(bsize):
@@ -254,13 +270,18 @@ def parse_predictions(end_points, config_dict):
                 boxes_2d_with_prob[j,3] = np.max(pred_corners_3d_upright_camera[i,j,:,2])
                 boxes_2d_with_prob[j,4] = obj_prob[i,j]
             nonempty_box_inds = np.where(nonempty_box_mask[i,:]==1)[0]
-            pick = nms_2d_faster(boxes_2d_with_prob[nonempty_box_mask[i,:]==1,:],
-                config_dict['nms_iou'], config_dict['use_old_type_nms'])
+            if sela:
+                pick = nms_2d_faster_sela(boxes_2d_with_prob[nonempty_box_mask[i,:]==1,:],
+                    config_dict['nms_iou'], alpha[i], config_dict['use_old_type_nms'])
+            else:
+                pick = nms_2d_faster(boxes_2d_with_prob[nonempty_box_mask[i,:]==1,:],
+                    config_dict['nms_iou'], config_dict['use_old_type_nms'])
+                
             assert(len(pick)>0)
             pred_mask[i, nonempty_box_inds[pick]] = 1
         end_points['pred_mask'] = pred_mask
         # ---------- NMS output: pred_mask in (B,K) -----------
-    elif config_dict['use_3d_nms'] and (not config_dict['cls_nms']):
+    elif config_dict['use_3d_nms'] and (not config_dict['cls_nms']): # config for ScanNet during SDCoT training
         # ---------- NMS input: pred_with_prob in (B,K,7) -----------
         pred_mask = np.zeros((bsize, K))
         for i in range(bsize):
@@ -274,13 +295,18 @@ def parse_predictions(end_points, config_dict):
                 boxes_3d_with_prob[j,5] = np.max(pred_corners_3d_upright_camera[i,j,:,2])
                 boxes_3d_with_prob[j,6] = obj_prob[i,j]
             nonempty_box_inds = np.where(nonempty_box_mask[i,:]==1)[0]
-            pick = nms_3d_faster(boxes_3d_with_prob[nonempty_box_mask[i,:]==1,:],
-                config_dict['nms_iou'], config_dict['use_old_type_nms'])
+            
+            if sela:
+                pick = nms_3d_faster_sela(boxes_3d_with_prob[nonempty_box_mask[i,:]==1,:],
+                config_dict["nms_iou"], alpha[i], config_dict['use_old_type_nms'])
+            else:
+                pick = nms_3d_faster(boxes_3d_with_prob[nonempty_box_mask[i,:]==1,:],
+                config_dict["nms_iou"], config_dict['use_old_type_nms'])
             assert(len(pick)>0)
             pred_mask[i, nonempty_box_inds[pick]] = 1
         end_points['pred_mask'] = pred_mask
         # ---------- NMS output: pred_mask in (B,K) -----------
-    elif config_dict['use_3d_nms'] and config_dict['cls_nms']:
+    elif config_dict['use_3d_nms'] and config_dict['cls_nms']: # config for ScanNet during evaluation
         # ---------- NMS input: pred_with_prob in (B,K,8) -----------
         pred_mask = np.zeros((bsize, K))
         for i in range(bsize):
@@ -295,7 +321,12 @@ def parse_predictions(end_points, config_dict):
                 boxes_3d_with_prob[j,6] = obj_prob[i,j]
                 boxes_3d_with_prob[j,7] = pred_sem_cls[i,j] # only suppress if the two boxes are of the same class!!
             nonempty_box_inds = np.where(nonempty_box_mask[i,:]==1)[0]
-            pick = nms_3d_faster_samecls(boxes_3d_with_prob[nonempty_box_mask[i,:]==1,:],
+            
+            if sela:
+                pick = nms_3d_faster_samecls_sela(boxes_3d_with_prob[nonempty_box_mask[i,:]==1,:],
+                        config_dict['nms_iou'], alpha[i], config_dict['use_old_type_nms'])                                  
+            else:
+                pick = nms_3d_faster_samecls(boxes_3d_with_prob[nonempty_box_mask[i,:]==1,:],
                 config_dict['nms_iou'], config_dict['use_old_type_nms'])
             assert(len(pick)>0)
             pred_mask[i, nonempty_box_inds[pick]] = 1
