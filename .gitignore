@@ -3,7 +3,7 @@ sunrgbd
 venv
 pointnet2
 cfg
-log_scannet
+log_sunrgbd
 val_bboxes
 
 __pycache__

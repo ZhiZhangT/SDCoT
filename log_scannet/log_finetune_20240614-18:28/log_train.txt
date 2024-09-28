@@ -1,0 +1,437 @@
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: last
+log_dir: /home/peisheng/SDCoT/log_scannet/log_finetune_20240614-18:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: finetune
+model_checkpoint_path: log_scannet/log_basetrain_20240517-22:53
+model_name: None
+n_epochs: 100
+n_novel_class: 9
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: True
+per_class_proposal: False
+phase: train
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: False
+use_cls_nms: False
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ Classifier Weights Base:------------  
+ tensor([[-0.6231,  0.0859,  0.2508,  ...,  0.4423, -0.0584, -0.3999],
+        [-0.5707, -0.7664, -0.4828,  ..., -0.4345, -0.6298, -0.3870],
+        [ 0.2017, -0.1147,  0.2848,  ..., -0.4588, -0.0230,  0.1740],
+        ...,
+        [ 0.1050, -0.3755, -0.5095,  ..., -0.4371, -0.2454,  0.1352],
+        [-0.1321, -0.0147,  0.1639,  ..., -0.2600,  0.1629, -0.6102],
+        [-0.1040,  0.3956, -0.3068,  ...,  0.2792,  0.2829,  0.1840]],
+       device='cuda:0')
+------------ VoteNet parameters -------------
+backbone_net.sa1.mlp_module.layer0.conv.weight | trainable: False
+backbone_net.sa1.mlp_module.layer0.bn.bn.weight | trainable: False
+backbone_net.sa1.mlp_module.layer0.bn.bn.bias | trainable: False
+backbone_net.sa1.mlp_module.layer1.conv.weight | trainable: False
+backbone_net.sa1.mlp_module.layer1.bn.bn.weight | trainable: False
+backbone_net.sa1.mlp_module.layer1.bn.bn.bias | trainable: False
+backbone_net.sa1.mlp_module.layer2.conv.weight | trainable: False
+backbone_net.sa1.mlp_module.layer2.bn.bn.weight | trainable: False
+backbone_net.sa1.mlp_module.layer2.bn.bn.bias | trainable: False
+backbone_net.sa2.mlp_module.layer0.conv.weight | trainable: False
+backbone_net.sa2.mlp_module.layer0.bn.bn.weight | trainable: False
+backbone_net.sa2.mlp_module.layer0.bn.bn.bias | trainable: False
+backbone_net.sa2.mlp_module.layer1.conv.weight | trainable: False
+backbone_net.sa2.mlp_module.layer1.bn.bn.weight | trainable: False
+backbone_net.sa2.mlp_module.layer1.bn.bn.bias | trainable: False
+backbone_net.sa2.mlp_module.layer2.conv.weight | trainable: False
+backbone_net.sa2.mlp_module.layer2.bn.bn.weight | trainable: False
+backbone_net.sa2.mlp_module.layer2.bn.bn.bias | trainable: False
+backbone_net.sa3.mlp_module.layer0.conv.weight | trainable: False
+backbone_net.sa3.mlp_module.layer0.bn.bn.weight | trainable: False
+backbone_net.sa3.mlp_module.layer0.bn.bn.bias | trainable: False
+backbone_net.sa3.mlp_module.layer1.conv.weight | trainable: False
+backbone_net.sa3.mlp_module.layer1.bn.bn.weight | trainable: False
+backbone_net.sa3.mlp_module.layer1.bn.bn.bias | trainable: False
+backbone_net.sa3.mlp_module.layer2.conv.weight | trainable: False
+backbone_net.sa3.mlp_module.layer2.bn.bn.weight | trainable: False
+backbone_net.sa3.mlp_module.layer2.bn.bn.bias | trainable: False
+backbone_net.sa4.mlp_module.layer0.conv.weight | trainable: False
+backbone_net.sa4.mlp_module.layer0.bn.bn.weight | trainable: False
+backbone_net.sa4.mlp_module.layer0.bn.bn.bias | trainable: False
+backbone_net.sa4.mlp_module.layer1.conv.weight | trainable: False
+backbone_net.sa4.mlp_module.layer1.bn.bn.weight | trainable: False
+backbone_net.sa4.mlp_module.layer1.bn.bn.bias | trainable: False
+backbone_net.sa4.mlp_module.layer2.conv.weight | trainable: False
+backbone_net.sa4.mlp_module.layer2.bn.bn.weight | trainable: False
+backbone_net.sa4.mlp_module.layer2.bn.bn.bias | trainable: False
+backbone_net.fp1.mlp.layer0.conv.weight | trainable: False
+backbone_net.fp1.mlp.layer0.bn.bn.weight | trainable: False
+backbone_net.fp1.mlp.layer0.bn.bn.bias | trainable: False
+backbone_net.fp1.mlp.layer1.conv.weight | trainable: False
+backbone_net.fp1.mlp.layer1.bn.bn.weight | trainable: False
+backbone_net.fp1.mlp.layer1.bn.bn.bias | trainable: False
+backbone_net.fp2.mlp.layer0.conv.weight | trainable: False
+backbone_net.fp2.mlp.layer0.bn.bn.weight | trainable: False
+backbone_net.fp2.mlp.layer0.bn.bn.bias | trainable: False
+backbone_net.fp2.mlp.layer1.conv.weight | trainable: False
+backbone_net.fp2.mlp.layer1.bn.bn.weight | trainable: False
+backbone_net.fp2.mlp.layer1.bn.bn.bias | trainable: False
+vgen.conv1.weight | trainable: False
+vgen.conv1.bias | trainable: False
+vgen.conv2.weight | trainable: False
+vgen.conv2.bias | trainable: False
+vgen.conv3.weight | trainable: False
+vgen.conv3.bias | trainable: False
+vgen.bn1.weight | trainable: False
+vgen.bn1.bias | trainable: False
+vgen.bn2.weight | trainable: False
+vgen.bn2.bias | trainable: False
+pgen.vote_aggregation.mlp_module.layer0.conv.weight | trainable: False
+pgen.vote_aggregation.mlp_module.layer0.bn.bn.weight | trainable: False
+pgen.vote_aggregation.mlp_module.layer0.bn.bn.bias | trainable: False
+pgen.vote_aggregation.mlp_module.layer1.conv.weight | trainable: False
+pgen.vote_aggregation.mlp_module.layer1.bn.bn.weight | trainable: False
+pgen.vote_aggregation.mlp_module.layer1.bn.bn.bias | trainable: False
+pgen.vote_aggregation.mlp_module.layer2.conv.weight | trainable: False
+pgen.vote_aggregation.mlp_module.layer2.bn.bn.weight | trainable: False
+pgen.vote_aggregation.mlp_module.layer2.bn.bn.bias | trainable: False
+pgen.mlp_module.0.weight | trainable: False
+pgen.mlp_module.0.bias | trainable: False
+pgen.mlp_module.1.weight | trainable: False
+pgen.mlp_module.1.bias | trainable: False
+pgen.mlp_module.3.weight | trainable: False
+pgen.mlp_module.3.bias | trainable: False
+pgen.mlp_module.4.weight | trainable: False
+pgen.mlp_module.4.bias | trainable: False
+prediction_header.classifier_weights | trainable: True
+prediction_header.regressor.weight | trainable: False
+prediction_header.regressor.bias | trainable: False
+---------------------------------------------
+
+
+**** EPOCH 000 ****
+2024-06-14 18:28:34.868276
+ ---- batch: 020 ----
+train mean box_loss: 6.435843
+train mean center_loss: 3.013193
+train mean detection_loss: 18.379461
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.379883
+train mean obj_acc: 15.038429
+train mean objectness_loss: 5.586943
+train mean pos_ratio: 1.054688
+train mean sem_cls_loss: 45.750733
+train mean size_reg_loss: 3.422649
+train mean supervised_loss: 330.744061
+train mean vote_loss: 14.694946
+ ---- batch: 040 ----
+train mean box_loss: 6.020633
+train mean center_loss: 2.793789
+train mean detection_loss: 16.439110
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.449219
+train mean obj_acc: 15.353091
+train mean objectness_loss: 5.336275
+train mean pos_ratio: 1.123047
+train mean sem_cls_loss: 38.751697
+train mean size_reg_loss: 3.226845
+train mean supervised_loss: 299.461016
+train mean vote_loss: 13.506992
+ ---- batch: 060 ----
+train mean box_loss: 5.977347
+train mean center_loss: 3.019255
+train mean detection_loss: 15.828313
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.509766
+train mean obj_acc: 15.424779
+train mean objectness_loss: 5.625468
+train mean pos_ratio: 1.097656
+train mean sem_cls_loss: 35.191157
+train mean size_reg_loss: 2.958092
+train mean supervised_loss: 299.574293
+train mean vote_loss: 14.129116
+ ---- batch: 080 ----
+train mean box_loss: 6.011798
+train mean center_loss: 2.751146
+train mean detection_loss: 15.279195
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.183594
+train mean obj_acc: 15.263860
+train mean objectness_loss: 5.762994
+train mean pos_ratio: 1.168945
+train mean sem_cls_loss: 31.929503
+train mean size_reg_loss: 3.260651
+train mean supervised_loss: 286.935180
+train mean vote_loss: 13.414323
+ ---- batch: 100 ----
+train mean box_loss: 6.079892
+train mean center_loss: 2.930186
+train mean detection_loss: 14.826982
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.451172
+train mean obj_acc: 15.250795
+train mean objectness_loss: 5.554901
+train mean pos_ratio: 1.133789
+train mean sem_cls_loss: 29.848199
+train mean size_reg_loss: 3.149706
+train mean supervised_loss: 287.057933
+train mean vote_loss: 13.878811
+ ---- batch: 120 ----
+train mean box_loss: 5.812463
+train mean center_loss: 3.064010
+train mean detection_loss: 14.188247
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.431641
+train mean obj_acc: 15.039898
+train mean objectness_loss: 5.763289
+train mean pos_ratio: 1.088867
+train mean sem_cls_loss: 27.470697
+train mean size_reg_loss: 2.748453
+train mean supervised_loss: 285.393015
+train mean vote_loss: 14.351055
+ ---- batch: 140 ----
+train mean box_loss: 5.885994
+train mean center_loss: 2.947936
+train mean detection_loss: 14.075249
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.264648
+train mean obj_acc: 15.108187
+train mean objectness_loss: 5.698396
+train mean pos_ratio: 1.180664
+train mean sem_cls_loss: 26.700282
+train mean size_reg_loss: 2.938058
+train mean supervised_loss: 288.851460
+train mean vote_loss: 14.809897
+
+**** EPOCH 001 ****
+2024-06-14 18:28:54.771034
+ ---- batch: 020 ----
+train mean box_loss: 6.671200
+train mean center_loss: 3.117811
+train mean detection_loss: 14.238993
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.562500
+train mean obj_acc: 15.504084
+train mean objectness_loss: 5.217597
+train mean pos_ratio: 1.047852
+train mean sem_cls_loss: 24.794974
+train mean size_reg_loss: 3.553389
+train mean supervised_loss: 288.024903
+train mean vote_loss: 14.563498
+ ---- batch: 040 ----
+train mean box_loss: 5.618299
+train mean center_loss: 2.861068
+train mean detection_loss: 13.178303
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.437500
+train mean obj_acc: 15.265371
+train mean objectness_loss: 5.539879
+train mean pos_ratio: 1.145508
+train mean sem_cls_loss: 23.950323
+train mean size_reg_loss: 2.757230
+train mean supervised_loss: 277.158034
+train mean vote_loss: 14.537501
+ ---- batch: 060 ----
+train mean box_loss: 6.340594
+train mean center_loss: 3.023952
+train mean detection_loss: 13.899590
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.560547
+train mean obj_acc: 14.926480
+train mean objectness_loss: 5.867267
+train mean pos_ratio: 1.064453
+train mean sem_cls_loss: 23.126813
+train mean size_reg_loss: 3.316642
+train mean supervised_loss: 285.474683
+train mean vote_loss: 14.647878
+ ---- batch: 080 ----
+train mean box_loss: 5.674979
+train mean center_loss: 3.075802
+train mean detection_loss: 13.075915
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.363281
+train mean obj_acc: 14.793039
+train mean objectness_loss: 5.866951
+train mean pos_ratio: 1.123047
+train mean sem_cls_loss: 22.337303
+train mean size_reg_loss: 2.599177
+train mean supervised_loss: 268.524364
+train mean vote_loss: 13.776522
+ ---- batch: 100 ----
+train mean box_loss: 6.275581
+train mean center_loss: 2.902033
+train mean detection_loss: 13.384295
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.131836
+train mean obj_acc: 15.415688
+train mean objectness_loss: 5.627489
+train mean pos_ratio: 1.186523
+train mean sem_cls_loss: 21.474847
+train mean size_reg_loss: 3.373548
+train mean supervised_loss: 266.016340
+train mean vote_loss: 13.217339
+ ---- batch: 120 ----
+train mean box_loss: 6.168344
+train mean center_loss: 3.006961
+train mean detection_loss: 13.226396
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.409180
+train mean obj_acc: 15.264711
+train mean objectness_loss: 5.536996
+train mean pos_ratio: 1.101562
+train mean sem_cls_loss: 21.447769
+train mean size_reg_loss: 3.161383
+train mean supervised_loss: 273.950739
+train mean vote_loss: 14.168678
+ ---- batch: 140 ----
+train mean box_loss: 6.076087
+train mean center_loss: 2.825429
+train mean detection_loss: 13.250655
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.208008
+train mean obj_acc: 15.030844
+train mean objectness_loss: 5.866496
+train mean pos_ratio: 1.130859
+train mean sem_cls_loss: 21.206599
+train mean size_reg_loss: 3.250658
+train mean supervised_loss: 273.837682
+train mean vote_loss: 14.133113
+
+**** EPOCH 002 ****
+2024-06-14 18:29:13.538404
+ ---- batch: 020 ----
+train mean box_loss: 5.954728
+train mean center_loss: 2.884357
+train mean detection_loss: 13.056344
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.415039
+train mean obj_acc: 14.910203
+train mean objectness_loss: 6.023946
+train mean pos_ratio: 1.140625
+train mean sem_cls_loss: 20.448215
+train mean size_reg_loss: 3.070371
+train mean supervised_loss: 272.089786
+train mean vote_loss: 14.152635
+ ---- batch: 040 ----
+train mean box_loss: 5.596097
+train mean center_loss: 2.687696
+train mean detection_loss: 12.438168
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.373047
+train mean obj_acc: 15.472106
+train mean objectness_loss: 5.476468
+train mean pos_ratio: 1.096680
+train mean sem_cls_loss: 20.519189
+train mean size_reg_loss: 2.908401
+train mean supervised_loss: 253.581929
+train mean vote_loss: 12.920025
+ ---- batch: 060 ----
+train mean box_loss: 5.971616
+train mean center_loss: 2.984739
+train mean detection_loss: 12.874007
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.465820
+train mean obj_acc: 15.259895
+train mean objectness_loss: 5.653283
+train mean pos_ratio: 1.094727
+train mean sem_cls_loss: 20.378750
+train mean size_reg_loss: 2.986877
+train mean supervised_loss: 266.008896
+train mean vote_loss: 13.726883
+ ---- batch: 080 ----
+train mean box_loss: 6.049668
+train mean center_loss: 2.826804
+train mean detection_loss: 12.912487
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.324219
+train mean obj_acc: 15.319907
+train mean objectness_loss: 5.450808
+train mean pos_ratio: 1.109375
+train mean sem_cls_loss: 20.687073
+train mean size_reg_loss: 3.222864
+train mean supervised_loss: 261.988221
+train mean vote_loss: 13.286335
+ ---- batch: 100 ----
+train mean box_loss: 6.460253
+train mean center_loss: 3.158640
+train mean detection_loss: 12.971533
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.430664
+train mean obj_acc: 15.018808
+train mean objectness_loss: 5.586545
+train mean pos_ratio: 1.087891
+train mean sem_cls_loss: 18.590039
+train mean size_reg_loss: 3.301613
+train mean supervised_loss: 273.668523
+train mean vote_loss: 14.395318
+ ---- batch: 120 ----
+train mean box_loss: 6.169737
+train mean center_loss: 2.822709
+train mean detection_loss: 12.638550
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.460938
+train mean obj_acc: 15.346899
+train mean objectness_loss: 5.486416
+train mean pos_ratio: 1.094727
+train mean sem_cls_loss: 18.628025
+train mean size_reg_loss: 3.347028
+train mean supervised_loss: 275.313852
+train mean vote_loss: 14.892836
+ ---- batch: 140 ----
+train mean box_loss: 6.337648
+train mean center_loss: 3.026125
+train mean detection_loss: 12.989177
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.000000
+train mean neg_ratio: 15.252930
+train mean obj_acc: 15.190237
+train mean objectness_loss: 5.587424
+train mean pos_ratio: 1.115234
+train mean sem_cls_loss: 19.289083
+train mean size_reg_loss: 3.311523
+train mean supervised_loss: 271.961777
+train mean vote_loss: 14.207001
+
+**** EPOCH 003 ****
+2024-06-14 18:29:32.512895

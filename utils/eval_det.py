@@ -22,6 +22,7 @@
 import numpy as np
 import pandas as pd
 import os
+from ground_truth_object_results.sela_loss_nms_investigation.analyze_spatialzones import divide_scene, get_scene_dimensions_center, get_zone_for_bbox, get_zones_for_gt_bboxes, plot_scene_go
 
 
 def voc_ap(rec, prec, use_07_metric=False):
@@ -363,3 +364,99 @@ def eval_gt_acc(pred_all, gt_all, dataset, img_id_to_check, save_dir, ovthresh=0
         '''
     df = pd.DataFrame(data, columns=['img_id', 'scan_name', 'classname', 'gt_bbox_index', 'pred_bbox_index'])
     return df
+
+def eval_det_cls_wrapper_task(args):
+    zone_index, classname, pred_data, gt_data, ovthresh, use_07_metric, get_iou_func = args
+    rec_zone_cls, prec_zone_cls, ap_zone_cls = eval_det_cls(
+        pred_data, gt_data, ovthresh, use_07_metric, get_iou_func
+    )
+    return (zone_index, classname, rec_zone_cls, prec_zone_cls, ap_zone_cls)
+
+def eval_det_spatialzones_multiprocessing(pred_all, gt_all, ovthresh=0.25, use_07_metric=False, get_iou_func=get_iou, n=4):
+    """ Generic functions to compute precision/recall for object detection
+        for multiple classes.
+        Input:
+            pred_all: map of {img_id: [(classname, bbox, score)]}
+            gt_all: map of {img_id: [(classname, bbox)]}
+            ovthresh: scalar, iou threshold
+            use_07_metric: bool, if true use VOC07 11 point method
+        Output:
+            rec: {spatialzone_idx: rec}
+            prec: {spatialzone_idx: prec_all}
+            ap: {spatialzone_idx: scalar}
+    """
+    pred = {} # map {spatialzone_idx: pred}
+    gt = {} # map {spatialzone_idx: gt}
+    
+    # Get the spatial zones for the GT bboxes
+    gt_zone_mappings = {} # Dictionary( img_id: Dictionary( bbox_index: (classname, zone_index) ) )
+    pred_zone_mappings = {} # Dictionary( img_id: Dictionary( bbox_index: (classname, zone_index) ) )
+    
+    for img_id in gt_all.keys():
+        gt_zone_mappings[img_id] = get_zones_for_gt_bboxes(img_id, n_zones=n)
+        for bbox_index, (classname, bbox) in enumerate(gt_all[img_id]):
+            zone_index = gt_zone_mappings[img_id][bbox_index][1]
+            gt_all[img_id][bbox_index] = (classname, bbox, zone_index)
+        
+        for classname, bbox, zone_index in gt_all[img_id]:
+            gt.setdefault(zone_index, {}).setdefault(classname, {}).setdefault(img_id, []).append(bbox)
+            
+            
+    for img_id in pred_all.keys():
+        (scene_dimensions, scene_center, gt_entities) = get_scene_dimensions_center(img_id)
+        zones = divide_scene(n, scene_dimensions, scene_center)
+        
+        for bbox_index, (classname, bbox, score) in enumerate(pred_all[img_id]):
+            bbox_center = np.mean(bbox, axis=0)
+            zone_index = get_zone_for_bbox(bbox_center=bbox_center, zones=zones)
+            if zone_index == -1:
+                print('Zone index is -1 for bbox: ', bbox)
+                print('Scene center: ', scene_center)
+                print('Scene dimensions: ', scene_dimensions)
+                print('Zones: ', zones)
+                print('Bbox center: ', bbox_center)
+                print('Bbox: ', bbox)
+                print('Img_id: ', img_id)
+                plot_scene_go(zones, [bbox_center], gt_entities)
+                break
+            pred_all[img_id][bbox_index] = (classname, bbox, score, zone_index)
+        
+        for classname, bbox, score, zone_index in pred_all[img_id]:
+            pred.setdefault(zone_index, {}).setdefault(classname, {}).setdefault(img_id, []).append((bbox, score))
+    
+
+    rec = {}
+    prec = {}
+    ap = {}
+    p = Pool(processes=10)
+    tasks = []
+
+    for zone_index in gt.keys():
+        for classname in gt[zone_index]:
+            gt_data = gt[zone_index][classname]
+            pred_data = pred.get(zone_index, {}).get(classname, {})
+            tasks.append((
+                zone_index, classname, pred_data, gt_data,
+                ovthresh, use_07_metric, get_iou_func
+            ))
+
+    results = p.map(eval_det_cls_wrapper_task, tasks)
+    p.close()
+    p.join()
+
+    for zone_index, classname, rec_zone_cls, prec_zone_cls, ap_zone_cls in results:
+        rec.setdefault(zone_index, {})[classname] = rec_zone_cls
+        prec.setdefault(zone_index, {})[classname] = prec_zone_cls
+        ap.setdefault(zone_index, {})[classname] = ap_zone_cls
+        print(zone_index, classname, ap_zone_cls)
+
+    # Handle zone_indices not in pred by setting metrics to zero
+    for zone_index in gt.keys():
+        for classname in gt[zone_index]:
+            if classname not in pred.get(zone_index, {}):
+                rec.setdefault(zone_index, {})[classname] = np.array([]) 
+                prec.setdefault(zone_index, {})[classname] = np.array([])
+                ap.setdefault(zone_index, {})[classname] = 0.0
+                print(zone_index, classname, 0.0)
+
+    return rec, prec, ap

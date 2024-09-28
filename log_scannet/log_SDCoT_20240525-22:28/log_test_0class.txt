@@ -1,0 +1,4225 @@
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.1718, -0.0999,  0.0993,  ...,  0.0261,  0.2414,  0.2866],
+        [-0.1269, -0.0711,  0.1518,  ..., -0.1038, -0.0565,  0.0088],
+        [-0.0284,  0.0333,  0.0922,  ...,  0.0054,  0.1852, -0.1290]])
+2024-08-11 00:56:27.494809
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.9887,  0.0831,  0.2657,  ...,  0.2803, -0.3015, -0.3737],
+        [-0.6790, -0.5265, -0.7210,  ..., -0.6211, -0.7452, -0.0932],
+        [ 0.1609, -0.0690,  0.3380,  ..., -0.7102, -0.2592,  0.1266],
+        ...,
+        [ 0.3988,  0.2122,  0.2055,  ...,  0.2838,  0.2724,  0.0525],
+        [ 0.0017, -0.3195,  0.0549,  ...,  0.2389, -0.0310,  0.0870],
+        [ 0.1282, -0.4203, -0.2085,  ...,  0.2685,  0.4439,  0.2664]],
+       device='cuda:0')
+eval mean box_loss: 0.133950
+eval mean center_loss: 0.054427
+eval mean detection_loss: 0.305279
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.507337
+eval mean obj_acc: 0.887453
+eval mean objectness_loss: 0.119587
+eval mean pos_ratio: 0.175130
+eval mean sem_cls_loss: 0.557679
+eval mean size_reg_loss: 0.079523
+eval mean supervised_loss: 7.085267
+eval mean vote_loss: 0.403247
+eval bathtub Average Precision: 0.594087
+eval bed Average Precision: 0.816068
+eval bookshelf Average Precision: 0.488133
+eval cabinet Average Precision: 0.288109
+eval chair Average Precision: 0.862695
+eval counter Average Precision: 0.492904
+eval curtain Average Precision: 0.401925
+eval desk Average Precision: 0.623067
+eval door Average Precision: 0.367783
+eval otherfurniture Average Precision: 0.398202
+eval picture Average Precision: 0.048852
+eval refrigerator Average Precision: 0.447230
+eval showercurtain Average Precision: 0.637219
+eval sink Average Precision: 0.419109
+eval sofa Average Precision: 0.863947
+eval table Average Precision: 0.632445
+eval toilet Average Precision: 0.918628
+eval window Average Precision: 0.322837
+eval mAP: 0.534625
+eval bathtub Recall: 0.935484
+eval bed Recall: 0.901235
+eval bookshelf Recall: 0.740260
+eval cabinet Recall: 0.588710
+eval chair Recall: 0.906433
+eval counter Recall: 0.769231
+eval curtain Recall: 0.716418
+eval desk Recall: 0.866142
+eval door Recall: 0.563169
+eval otherfurniture Recall: 0.658491
+eval picture Recall: 0.189189
+eval refrigerator Recall: 0.824561
+eval showercurtain Recall: 0.750000
+eval sink Recall: 0.612245
+eval sofa Recall: 0.979381
+eval table Recall: 0.811429
+eval toilet Recall: 1.000000
+eval window Recall: 0.521277
+eval AR: 0.740758
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-21 14:42:15.297911
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+eval mean box_loss: 0.095831
+eval mean center_loss: 0.044106
+eval mean detection_loss: 0.614748
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.664789
+eval mean obj_acc: 0.816600
+eval mean objectness_loss: 0.155558
+eval mean pos_ratio: 0.110627
+eval mean sem_cls_loss: 2.205692
+eval mean size_reg_loss: 0.051725
+eval mean supervised_loss: 9.831609
+eval mean vote_loss: 0.368413
+eval bathtub Average Precision: 0.004023
+eval bed Average Precision: 0.055140
+eval bookshelf Average Precision: 0.000740
+eval cabinet Average Precision: 0.028265
+eval chair Average Precision: 0.117544
+eval counter Average Precision: 0.000415
+eval curtain Average Precision: 0.008585
+eval desk Average Precision: 0.002894
+eval door Average Precision: 0.008034
+eval mAP: 0.025071
+eval bathtub Recall: 0.903226
+eval bed Recall: 0.802469
+eval bookshelf Recall: 0.298701
+eval cabinet Recall: 0.540323
+eval chair Recall: 0.539474
+eval counter Recall: 0.230769
+eval curtain Recall: 0.402985
+eval desk Recall: 0.480315
+eval door Recall: 0.278373
+eval AR: 0.497404
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-21 14:47:05.093024
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+eval mean box_loss: 0.095831
+eval mean center_loss: 0.044106
+eval mean detection_loss: 0.614748
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.664789
+eval mean obj_acc: 0.816600
+eval mean objectness_loss: 0.155558
+eval mean pos_ratio: 0.110627
+eval mean sem_cls_loss: 2.205692
+eval mean size_reg_loss: 0.051725
+eval mean supervised_loss: 9.831609
+eval mean vote_loss: 0.368413
+eval bathtub Average Precision: 0.004023
+eval bed Average Precision: 0.055140
+eval bookshelf Average Precision: 0.000740
+eval cabinet Average Precision: 0.028265
+eval chair Average Precision: 0.117544
+eval counter Average Precision: 0.000415
+eval curtain Average Precision: 0.008585
+eval desk Average Precision: 0.002894
+eval door Average Precision: 0.008034
+eval mAP: 0.025071
+eval bathtub Recall: 0.903226
+eval bed Recall: 0.802469
+eval bookshelf Recall: 0.298701
+eval cabinet Recall: 0.540323
+eval chair Recall: 0.539474
+eval counter Recall: 0.230769
+eval curtain Recall: 0.402985
+eval desk Recall: 0.480315
+eval door Recall: 0.278373
+eval AR: 0.497404
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-21 23:20:53.399673
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-21 23:22:11.894150
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-21 23:26:05.679825
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-21 23:26:44.332854
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-21 23:29:58.082104
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-21 23:30:58.483855
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-21 23:31:57.448346
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-21 23:33:20.989682
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-21 23:33:44.032857
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-21 23:35:07.528490
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-21 23:35:43.665032
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-21 23:38:16.908142
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-21 23:39:56.745884
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-21 23:41:40.066977
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+eval mean box_loss: 0.095831
+eval mean center_loss: 0.044106
+eval mean detection_loss: 0.614748
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.664789
+eval mean obj_acc: 0.816600
+eval mean objectness_loss: 0.155558
+eval mean pos_ratio: 0.110627
+eval mean sem_cls_loss: 2.205692
+eval mean size_reg_loss: 0.051725
+eval mean supervised_loss: 9.831609
+eval mean vote_loss: 0.368413
+eval bathtub Average Precision: 0.004023
+eval bed Average Precision: 0.055140
+eval bookshelf Average Precision: 0.000740
+eval cabinet Average Precision: 0.028265
+eval chair Average Precision: 0.117544
+eval counter Average Precision: 0.000415
+eval curtain Average Precision: 0.008585
+eval desk Average Precision: 0.002894
+eval door Average Precision: 0.008034
+eval mAP: 0.025071
+eval bathtub Recall: 0.903226
+eval bed Recall: 0.802469
+eval bookshelf Recall: 0.298701
+eval cabinet Recall: 0.540323
+eval chair Recall: 0.539474
+eval counter Recall: 0.230769
+eval curtain Recall: 0.402985
+eval desk Recall: 0.480315
+eval door Recall: 0.278373
+eval AR: 0.497404
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:05:43.772962
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:06:09.974858
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:21:33.545683
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:22:59.551196
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:24:47.700510
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:25:12.466277
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:27:56.127695
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:28:45.206813
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:32:29.927152
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:36:54.933410
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+eval mean box_loss: 0.095831
+eval mean center_loss: 0.044106
+eval mean detection_loss: 0.614748
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.664789
+eval mean obj_acc: 0.816600
+eval mean objectness_loss: 0.155558
+eval mean pos_ratio: 0.110627
+eval mean sem_cls_loss: 2.205692
+eval mean size_reg_loss: 0.051725
+eval mean supervised_loss: 9.831609
+eval mean vote_loss: 0.368413
+eval bathtub Average Precision: 0.004023
+eval bed Average Precision: 0.055140
+eval bookshelf Average Precision: 0.000740
+eval cabinet Average Precision: 0.028265
+eval chair Average Precision: 0.117544
+eval counter Average Precision: 0.000415
+eval curtain Average Precision: 0.008585
+eval desk Average Precision: 0.002894
+eval door Average Precision: 0.008034
+eval mAP: 0.025071
+eval bathtub Recall: 0.903226
+eval bed Recall: 0.802469
+eval bookshelf Recall: 0.298701
+eval cabinet Recall: 0.540323
+eval chair Recall: 0.539474
+eval counter Recall: 0.230769
+eval curtain Recall: 0.402985
+eval desk Recall: 0.480315
+eval door Recall: 0.278373
+eval AR: 0.497404
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:51:58.346710
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:52:30.813006
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:52:41.849111
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:53:17.957518
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:54:40.033824
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:55:54.667352
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:56:04.223967
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 00:56:39.258571
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 01:04:08.072920
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 01:12:15.846661
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+eval mean box_loss: 0.235391
+eval mean center_loss: 0.081891
+eval mean detection_loss: 1.757837
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.664789
+eval mean obj_acc: 0.816600
+eval mean objectness_loss: 0.467441
+eval mean pos_ratio: 0.110627
+eval mean sem_cls_loss: 6.443628
+eval mean size_reg_loss: 0.153500
+eval mean supervised_loss: 21.262499
+eval mean vote_loss: 0.368413
+eval bathtub Average Precision: 0.004023
+eval bed Average Precision: 0.055140
+eval bookshelf Average Precision: 0.000740
+eval cabinet Average Precision: 0.028265
+eval chair Average Precision: 0.117544
+eval counter Average Precision: 0.000415
+eval curtain Average Precision: 0.008585
+eval desk Average Precision: 0.002894
+eval door Average Precision: 0.008034
+eval mAP: 0.025071
+eval bathtub Recall: 0.903226
+eval bed Recall: 0.802469
+eval bookshelf Recall: 0.298701
+eval cabinet Recall: 0.540323
+eval chair Recall: 0.539474
+eval counter Recall: 0.230769
+eval curtain Recall: 0.402985
+eval desk Recall: 0.480315
+eval door Recall: 0.278373
+eval AR: 0.497404
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 01:16:03.107708
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 01:21:20.242329
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 01:29:21.772621
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 01:31:05.291069
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 01:31:33.236934
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 01:33:44.169586
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 01:35:06.227873
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 01:37:34.390903
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 01:42:30.339004
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 01:49:20.314365
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+eval mean box_loss: 0.235391
+eval mean center_loss: 0.081891
+eval mean detection_loss: 1.757837
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.664789
+eval mean obj_acc: 0.816600
+eval mean objectness_loss: 0.467441
+eval mean pos_ratio: 0.110627
+eval mean sem_cls_loss: 6.443628
+eval mean size_reg_loss: 0.153500
+eval mean supervised_loss: 28.497406
+eval mean vote_loss: 1.091903
+eval bathtub Average Precision: 0.004023
+eval bed Average Precision: 0.055140
+eval bookshelf Average Precision: 0.000740
+eval cabinet Average Precision: 0.028265
+eval chair Average Precision: 0.117544
+eval counter Average Precision: 0.000415
+eval curtain Average Precision: 0.008585
+eval desk Average Precision: 0.002894
+eval door Average Precision: 0.008034
+eval mAP: 0.025071
+eval bathtub Recall: 0.903226
+eval bed Recall: 0.802469
+eval bookshelf Recall: 0.298701
+eval cabinet Recall: 0.540323
+eval chair Recall: 0.539474
+eval counter Recall: 0.230769
+eval curtain Recall: 0.402985
+eval desk Recall: 0.480315
+eval door Recall: 0.278373
+eval AR: 0.497404
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 01:51:32.243714
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+eval mean box_loss: 0.235391
+eval mean center_loss: 0.081891
+eval mean detection_loss: 1.757837
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.664789
+eval mean obj_acc: 0.816600
+eval mean objectness_loss: 0.467441
+eval mean pos_ratio: 0.110627
+eval mean sem_cls_loss: 6.443628
+eval mean size_reg_loss: 0.153500
+eval mean supervised_loss: 28.497406
+eval mean vote_loss: 1.091903
+eval bathtub Average Precision: 0.004023
+eval bed Average Precision: 0.055140
+eval bookshelf Average Precision: 0.000740
+eval cabinet Average Precision: 0.028265
+eval chair Average Precision: 0.117544
+eval counter Average Precision: 0.000415
+eval curtain Average Precision: 0.008585
+eval desk Average Precision: 0.002894
+eval door Average Precision: 0.008034
+eval mAP: 0.025071
+eval bathtub Recall: 0.903226
+eval bed Recall: 0.802469
+eval bookshelf Recall: 0.298701
+eval cabinet Recall: 0.540323
+eval chair Recall: 0.539474
+eval counter Recall: 0.230769
+eval curtain Recall: 0.402985
+eval desk Recall: 0.480315
+eval door Recall: 0.278373
+eval AR: 0.497404
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 01:53:40.222437
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+eval mean box_loss: 0.235391
+eval mean center_loss: 0.081891
+eval mean detection_loss: 1.757837
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.664789
+eval mean obj_acc: 0.816600
+eval mean objectness_loss: 0.467441
+eval mean pos_ratio: 0.110627
+eval mean sem_cls_loss: 6.443628
+eval mean size_reg_loss: 0.153500
+eval mean supervised_loss: 28.497406
+eval mean vote_loss: 1.091903
+eval bathtub Average Precision: 0.004023
+eval bed Average Precision: 0.055140
+eval bookshelf Average Precision: 0.000740
+eval cabinet Average Precision: 0.028265
+eval chair Average Precision: 0.117544
+eval counter Average Precision: 0.000415
+eval curtain Average Precision: 0.008585
+eval desk Average Precision: 0.002894
+eval door Average Precision: 0.008034
+eval mAP: 0.025071
+eval bathtub Recall: 0.903226
+eval bed Recall: 0.802469
+eval bookshelf Recall: 0.298701
+eval cabinet Recall: 0.540323
+eval chair Recall: 0.539474
+eval counter Recall: 0.230769
+eval curtain Recall: 0.402985
+eval desk Recall: 0.480315
+eval door Recall: 0.278373
+eval AR: 0.497404
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-08-22 01:57:02.581035
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-09-01 21:37:57.448570
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-09-01 21:45:54.124948
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-09-01 21:46:12.340471
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-09-01 21:46:37.554213
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-09-01 22:28:34.326733
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-09-01 22:29:15.328982
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-09-01 22:29:54.510425
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+eval mean box_loss: 0.235391
+eval mean center_loss: 0.081891
+eval mean detection_loss: 1.757837
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.664789
+eval mean obj_acc: 0.816600
+eval mean objectness_loss: 0.467441
+eval mean pos_ratio: 0.110627
+eval mean sem_cls_loss: 6.443628
+eval mean size_reg_loss: 0.153500
+eval mean supervised_loss: 21.262499
+eval mean vote_loss: 0.368413
+eval bathtub Average Precision: 0.004023
+eval bed Average Precision: 0.055140
+eval bookshelf Average Precision: 0.000740
+eval cabinet Average Precision: 0.028265
+eval chair Average Precision: 0.117544
+eval counter Average Precision: 0.000415
+eval curtain Average Precision: 0.008585
+eval desk Average Precision: 0.002894
+eval door Average Precision: 0.008034
+eval mAP: 0.025071
+eval bathtub Recall: 0.903226
+eval bed Recall: 0.802469
+eval bookshelf Recall: 0.298701
+eval cabinet Recall: 0.540323
+eval chair Recall: 0.539474
+eval counter Recall: 0.230769
+eval curtain Recall: 0.402985
+eval desk Recall: 0.480315
+eval door Recall: 0.278373
+eval AR: 0.497404
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-09-01 22:32:41.837657
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+eval mean box_loss: 0.235391
+eval mean center_loss: 0.081891
+eval mean detection_loss: 1.757837
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.664789
+eval mean obj_acc: 0.816600
+eval mean objectness_loss: 0.467441
+eval mean pos_ratio: 0.110627
+eval mean sem_cls_loss: 6.443628
+eval mean size_reg_loss: 0.153500
+eval mean supervised_loss: 28.497406
+eval mean vote_loss: 1.091903
+eval bathtub Average Precision: 0.004023
+eval bed Average Precision: 0.055140
+eval bookshelf Average Precision: 0.000740
+eval cabinet Average Precision: 0.028265
+eval chair Average Precision: 0.117544
+eval counter Average Precision: 0.000415
+eval curtain Average Precision: 0.008585
+eval desk Average Precision: 0.002894
+eval door Average Precision: 0.008034
+eval mAP: 0.025071
+eval bathtub Recall: 0.903226
+eval bed Recall: 0.802469
+eval bookshelf Recall: 0.298701
+eval cabinet Recall: 0.540323
+eval chair Recall: 0.539474
+eval counter Recall: 0.230769
+eval curtain Recall: 0.402985
+eval desk Recall: 0.480315
+eval door Recall: 0.278373
+eval AR: 0.497404
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-09-01 22:38:04.272718
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+eval mean box_loss: 0.235391
+eval mean center_loss: 0.081891
+eval mean detection_loss: 1.757837
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.664789
+eval mean obj_acc: 0.816600
+eval mean objectness_loss: 0.467441
+eval mean pos_ratio: 0.110627
+eval mean sem_cls_loss: 6.443628
+eval mean size_reg_loss: 0.153500
+eval mean supervised_loss: 28.497406
+eval mean vote_loss: 1.091903
+eval bathtub Average Precision: 0.004023
+eval bed Average Precision: 0.055140
+eval bookshelf Average Precision: 0.000740
+eval cabinet Average Precision: 0.028265
+eval chair Average Precision: 0.117544
+eval counter Average Precision: 0.000415
+eval curtain Average Precision: 0.008585
+eval desk Average Precision: 0.002894
+eval door Average Precision: 0.008034
+eval mAP: 0.025071
+eval bathtub Recall: 0.903226
+eval bed Recall: 0.802469
+eval bookshelf Recall: 0.298701
+eval cabinet Recall: 0.540323
+eval chair Recall: 0.539474
+eval counter Recall: 0.230769
+eval curtain Recall: 0.402985
+eval desk Recall: 0.480315
+eval door Recall: 0.278373
+eval AR: 0.497404
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-09-01 22:47:50.083853
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-09-01 22:50:14.906786
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+eval mean box_loss: 0.235391
+eval mean center_loss: 0.081891
+eval mean detection_loss: 1.757837
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.664789
+eval mean obj_acc: 0.816600
+eval mean objectness_loss: 0.467441
+eval mean pos_ratio: 0.110627
+eval mean sem_cls_loss: 6.443628
+eval mean size_reg_loss: 0.153500
+eval mean supervised_loss: 28.497406
+eval mean vote_loss: 1.091903
+eval bathtub Average Precision: 0.004023
+eval bed Average Precision: 0.055140
+eval bookshelf Average Precision: 0.000740
+eval cabinet Average Precision: 0.028265
+eval chair Average Precision: 0.117544
+eval counter Average Precision: 0.000415
+eval curtain Average Precision: 0.008585
+eval desk Average Precision: 0.002894
+eval door Average Precision: 0.008034
+eval mAP: 0.025071
+eval bathtub Recall: 0.903226
+eval bed Recall: 0.802469
+eval bookshelf Recall: 0.298701
+eval cabinet Recall: 0.540323
+eval chair Recall: 0.539474
+eval counter Recall: 0.230769
+eval curtain Recall: 0.402985
+eval desk Recall: 0.480315
+eval door Recall: 0.278373
+eval AR: 0.497404
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-09-01 22:51:40.719055
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]])
+2024-09-01 22:54:13.963193
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.0217,  0.0207, -0.1375,  ...,  0.1492, -0.0382,  0.0104],
+        [ 0.0099, -0.0289,  0.1369,  ...,  0.1011, -0.0035,  0.0908],
+        [-0.1359,  0.1300,  0.0723,  ..., -0.1516,  0.0638,  0.1152]],
+       device='cuda:0')
+eval mean box_loss: 0.235391
+eval mean center_loss: 0.081891
+eval mean detection_loss: 1.757837
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.664789
+eval mean obj_acc: 0.816600
+eval mean objectness_loss: 0.467441
+eval mean pos_ratio: 0.110627
+eval mean sem_cls_loss: 6.443628
+eval mean size_reg_loss: 0.153500
+eval mean supervised_loss: 28.497406
+eval mean vote_loss: 1.091903
+eval bathtub Average Precision: 0.000173
+eval bed Average Precision: 0.021355
+eval bookshelf Average Precision: 0.000231
+eval cabinet Average Precision: 0.003000
+eval chair Average Precision: 0.004623
+eval counter Average Precision: 0.000000
+eval curtain Average Precision: 0.000000
+eval desk Average Precision: 0.000031
+eval door Average Precision: 0.000000
+eval mAP: 0.003268
+eval bathtub Recall: 0.032258
+eval bed Recall: 0.197531
+eval bookshelf Recall: 0.025974
+eval cabinet Recall: 0.037634
+eval chair Recall: 0.020468
+eval counter Recall: 0.000000
+eval curtain Recall: 0.000000
+eval desk Recall: 0.007874
+eval door Recall: 0.000000
+eval AR: 0.035749
+------------ Ground Truths Dataframe: ------------: 
+

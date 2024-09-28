@@ -1,0 +1,350 @@
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_basetrain_20240901-17:48
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: basetrain
+model_checkpoint_path: None
+model_name: None
+n_epochs: 150
+n_novel_class: 5
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: True
+per_class_proposal: False
+phase: train
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: False
+use_cls_nms: False
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+
+**** EPOCH 000 ****
+Current BN decay momentum: 0.500000
+2024-09-01 17:48:16.242396
+ ---- batch: 020 ----
+train mean box_loss: 1.739382
+train mean center_loss: 1.024827
+train mean detection_loss: 3.312775
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.142694
+train mean neg_ratio: 0.887354
+train mean obj_acc: 0.796297
+train mean objectness_loss: 0.343241
+train mean pos_ratio: 0.016602
+train mean sem_cls_loss: 7.008864
+train mean size_reg_loss: 0.571861
+train mean supervised_loss: 46.861368
+train mean vote_loss: 1.373362
+ ---- batch: 040 ----
+train mean box_loss: 1.090726
+train mean center_loss: 0.650089
+train mean detection_loss: 2.371423
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.057679
+train mean neg_ratio: 0.911475
+train mean obj_acc: 0.985517
+train mean objectness_loss: 0.154335
+train mean pos_ratio: 0.013281
+train mean sem_cls_loss: 6.017644
+train mean size_reg_loss: 0.382958
+train mean supervised_loss: 40.071084
+train mean vote_loss: 1.635686
+ ---- batch: 060 ----
+train mean box_loss: 0.882810
+train mean center_loss: 0.523187
+train mean detection_loss: 1.981959
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.028569
+train mean neg_ratio: 0.887988
+train mean obj_acc: 0.980508
+train mean objectness_loss: 0.154719
+train mean pos_ratio: 0.017627
+train mean sem_cls_loss: 5.108947
+train mean size_reg_loss: 0.331054
+train mean supervised_loss: 33.189305
+train mean vote_loss: 1.336972
+ ---- batch: 080 ----
+train mean box_loss: 0.864213
+train mean center_loss: 0.452739
+train mean detection_loss: 1.885066
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.019388
+train mean neg_ratio: 0.872754
+train mean obj_acc: 0.977568
+train mean objectness_loss: 0.165431
+train mean pos_ratio: 0.020020
+train mean sem_cls_loss: 4.690685
+train mean size_reg_loss: 0.392086
+train mean supervised_loss: 30.444981
+train mean vote_loss: 1.159432
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_basetrain_20240901-17:48
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: basetrain
+model_checkpoint_path: None
+model_name: None
+n_epochs: 150
+n_novel_class: 5
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: True
+per_class_proposal: False
+phase: train
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: False
+use_cls_nms: False
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+
+**** EPOCH 000 ****
+Current BN decay momentum: 0.500000
+2024-09-01 17:48:49.921283
+ ---- batch: 020 ----
+train mean box_loss: 1.647521
+train mean center_loss: 1.062869
+train mean detection_loss: 3.162162
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.111137
+train mean neg_ratio: 0.912451
+train mean obj_acc: 0.958169
+train mean objectness_loss: 0.240977
+train mean pos_ratio: 0.014355
+train mean sem_cls_loss: 6.970763
+train mean size_reg_loss: 0.473515
+train mean supervised_loss: 46.013380
+train mean vote_loss: 1.439176
+ ---- batch: 040 ----
+train mean box_loss: 1.131178
+train mean center_loss: 0.714294
+train mean detection_loss: 2.375180
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.050089
+train mean neg_ratio: 0.912744
+train mean obj_acc: 0.986342
+train mean objectness_loss: 0.134789
+train mean pos_ratio: 0.012598
+train mean sem_cls_loss: 5.883039
+train mean size_reg_loss: 0.366796
+train mean supervised_loss: 38.397481
+train mean vote_loss: 1.464568
+ ---- batch: 060 ----
+train mean box_loss: 0.964795
+train mean center_loss: 0.600003
+train mean detection_loss: 2.021946
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.030071
+train mean neg_ratio: 0.899463
+train mean obj_acc: 0.984013
+train mean objectness_loss: 0.133990
+train mean pos_ratio: 0.014551
+train mean sem_cls_loss: 4.950779
+train mean size_reg_loss: 0.334721
+train mean supervised_loss: 33.179277
+train mean vote_loss: 1.295982
+ ---- batch: 080 ----
+train mean box_loss: 0.822890
+train mean center_loss: 0.459255
+train mean detection_loss: 1.885822
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.026260
+train mean neg_ratio: 0.860889
+train mean obj_acc: 0.973893
+train mean objectness_loss: 0.191206
+train mean pos_ratio: 0.023047
+train mean sem_cls_loss: 4.836647
+train mean size_reg_loss: 0.337375
+train mean supervised_loss: 30.283211
+train mean vote_loss: 1.142499
+ ---- batch: 100 ----
+train mean box_loss: 0.730256
+train mean center_loss: 0.381317
+train mean detection_loss: 1.676573
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.013870
+train mean neg_ratio: 0.830127
+train mean obj_acc: 0.968102
+train mean objectness_loss: 0.212309
+train mean pos_ratio: 0.027148
+train mean sem_cls_loss: 4.200810
+train mean size_reg_loss: 0.335070
+train mean supervised_loss: 27.115056
+train mean vote_loss: 1.034933
+ ---- batch: 120 ----
+train mean box_loss: 0.660589
+train mean center_loss: 0.352970
+train mean detection_loss: 1.589169
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.013097
+train mean neg_ratio: 0.819385
+train mean obj_acc: 0.963463
+train mean objectness_loss: 0.240308
+train mean pos_ratio: 0.030859
+train mean sem_cls_loss: 4.042129
+train mean size_reg_loss: 0.294522
+train mean supervised_loss: 25.236712
+train mean vote_loss: 0.934502
+ ---- batch: 140 ----
+train mean box_loss: 0.580993
+train mean center_loss: 0.307029
+train mean detection_loss: 1.393515
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.009774
+train mean neg_ratio: 0.795068
+train mean obj_acc: 0.957924
+train mean objectness_loss: 0.250049
+train mean pos_ratio: 0.034668
+train mean sem_cls_loss: 3.437487
+train mean size_reg_loss: 0.264190
+train mean supervised_loss: 22.890777
+train mean vote_loss: 0.895563
+
+**** EPOCH 001 ****
+Current BN decay momentum: 0.500000
+2024-09-01 17:49:25.914849
+ ---- batch: 020 ----
+train mean box_loss: 0.531081
+train mean center_loss: 0.274236
+train mean detection_loss: 1.300746
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.007541
+train mean neg_ratio: 0.767627
+train mean obj_acc: 0.941788
+train mean objectness_loss: 0.290412
+train mean pos_ratio: 0.044287
+train mean sem_cls_loss: 3.122290
+train mean size_reg_loss: 0.249305
+train mean supervised_loss: 21.290685
+train mean vote_loss: 0.828323
+ ---- batch: 040 ----
+train mean box_loss: 0.532581
+train mean center_loss: 0.248348
+train mean detection_loss: 1.282662
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.006394
+train mean neg_ratio: 0.769824
+train mean obj_acc: 0.929471
+train mean objectness_loss: 0.285917
+train mean pos_ratio: 0.044141
+train mean sem_cls_loss: 3.035612
+train mean size_reg_loss: 0.277839
+train mean supervised_loss: 21.011945
+train mean vote_loss: 0.818533
+ ---- batch: 060 ----
+train mean box_loss: 0.507290
+train mean center_loss: 0.246445
+train mean detection_loss: 1.266629
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.005306
+train mean neg_ratio: 0.760010
+train mean obj_acc: 0.920369
+train mean objectness_loss: 0.307378
+train mean pos_ratio: 0.048242
+train mean sem_cls_loss: 3.028251
+train mean size_reg_loss: 0.255538
+train mean supervised_loss: 20.422201
+train mean vote_loss: 0.775591
+ ---- batch: 080 ----
+train mean box_loss: 0.489880
+train mean center_loss: 0.247091
+train mean detection_loss: 1.197172
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.004899
+train mean neg_ratio: 0.744189
+train mean obj_acc: 0.920598
+train mean objectness_loss: 0.304830
+train mean pos_ratio: 0.050977
+train mean sem_cls_loss: 2.774384
+train mean size_reg_loss: 0.237890
+train mean supervised_loss: 19.469111
+train mean vote_loss: 0.749740
+ ---- batch: 100 ----
+train mean box_loss: 0.543234
+train mean center_loss: 0.257401
+train mean detection_loss: 1.323587
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.005173
+train mean neg_ratio: 0.760303
+train mean obj_acc: 0.916266
+train mean objectness_loss: 0.303219
+train mean pos_ratio: 0.048047
+train mean sem_cls_loss: 3.143722
+train mean size_reg_loss: 0.280659
+train mean supervised_loss: 21.070109
+train mean vote_loss: 0.783423
+ ---- batch: 120 ----
+train mean box_loss: 0.448065
+train mean center_loss: 0.234761
+train mean detection_loss: 1.159801
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.004078
+train mean neg_ratio: 0.743311
+train mean obj_acc: 0.920486
+train mean objectness_loss: 0.303169
+train mean pos_ratio: 0.054443
+train mean sem_cls_loss: 2.800757
+train mean size_reg_loss: 0.209227
+train mean supervised_loss: 18.933710
+train mean vote_loss: 0.733570
+ ---- batch: 140 ----
+train mean box_loss: 0.429687
+train mean center_loss: 0.220444
+train mean detection_loss: 1.028684
+train mean heading_cls_loss: 0.000000
+train mean heading_reg_loss: 0.003537
+train mean neg_ratio: 0.740186
+train mean obj_acc: 0.902589
+train mean objectness_loss: 0.299650
+train mean pos_ratio: 0.056836
+train mean sem_cls_loss: 2.245865
+train mean size_reg_loss: 0.205706
+train mean supervised_loss: 17.537396
+train mean vote_loss: 0.725055
+
+**** EPOCH 002 ****
+Current BN decay momentum: 0.500000
+2024-09-01 17:50:00.466279

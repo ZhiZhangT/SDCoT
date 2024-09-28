@@ -308,7 +308,7 @@ def compute_detection_loss(end_points, config, sela, objectness_loss_weight=0.5,
     return detection_loss, end_points
 
 
-def get_supervised_loss(end_points, dataset_config, sela=True):
+def get_supervised_loss(end_points, dataset_config, sela=False):
     vote_loss, end_points = compute_vote_loss(end_points, sela)
     detect_loss, end_points = compute_detection_loss(end_points, dataset_config, sela)
 

@@ -142,7 +142,7 @@ def main(args, eval_interval=10):
         logger.cprint(str(datetime.now()))
         # Reset numpy seed.
         # REF: https://github.com/pytorch/pytorch/issues/5059
-        np.random.seed()
+        np.random.seed(42)
 
         train_one_epoch(trainer, train_dataloader, logger, writer, epoch, args.batch_size)
 

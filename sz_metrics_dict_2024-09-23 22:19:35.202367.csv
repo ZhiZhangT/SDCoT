@@ -1,0 +1,15 @@
+,zone_index,0
+0,-1 Average Precision,
+1,0 Average Precision,
+2,1 Average Precision,0.010324660381375509
+3,2 Average Precision,0.022998128019476073
+4,3 Average Precision,0.03568874327760052
+5,4 Average Precision,0.0
+6,mAP,
+7,-1 Recall,
+8,0 Recall,
+9,1 Recall,0.13333333333333333
+10,2 Recall,0.14869888475836432
+11,3 Recall,0.11058451816745656
+12,4 Recall,0.0
+13,AR,

@@ -92,7 +92,7 @@ class SunrgbdDataset(Dataset):
         self.pc_attri_dim = 3 + 3 * self.use_color + 1 * self.use_height
         self.augment = augment
 
-        self.data_path = os.path.join(ROOT_DIR, 'sunrgbd')
+        self.data_path = os.path.join(ROOT_DIR, 'sunrgbd/mysunrgbd/mysunrgbd')
         self.train_data_path = os.path.join(self.data_path, 'sunrgbd_%s_pc_bbox_50k_train' %'v1' if cfg.USE_V1 else 'v2')
         self.val_data_path = os.path.join(self.data_path, 'sunrgbd_%s_pc_bbox_50k_val' %'v1' if cfg.USE_V1 else 'v2')
 

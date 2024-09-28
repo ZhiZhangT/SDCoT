@@ -1,0 +1,992 @@
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: basetrain
+model_checkpoint_path: log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.1718, -0.0999,  0.0993,  ...,  0.0261,  0.2414,  0.2866],
+        [-0.1269, -0.0711,  0.1518,  ..., -0.1038, -0.0565,  0.0088],
+        [-0.0284,  0.0333,  0.0922,  ...,  0.0054,  0.1852, -0.1290]])
+2024-09-23 14:33:36.405070
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.0867,  0.0677, -0.1231,  ..., -0.0377,  0.0340, -0.6755],
+        [-0.3519, -0.2510, -0.4561,  ..., -0.2127, -0.0794, -0.1353],
+        [-0.2690,  0.1214, -0.4790,  ...,  0.2011, -0.3543,  0.0474],
+        ...,
+        [-0.0077, -0.1397,  0.0936,  ...,  0.1554,  0.1695,  0.2603],
+        [ 0.1264, -0.2638,  0.2600,  ..., -0.0711, -0.7856, -0.4621],
+        [-0.0833,  0.0970, -0.5221,  ..., -0.0489, -0.2655, -0.1099]],
+       device='cuda:0')
+eval mean box_loss: 0.134006
+eval mean center_loss: 0.057829
+eval mean detection_loss: 0.310279
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.550005
+eval mean obj_acc: 0.879534
+eval mean objectness_loss: 0.102437
+eval mean pos_ratio: 0.145908
+eval mean sem_cls_loss: 0.625270
+eval mean size_reg_loss: 0.076177
+eval mean supervised_loss: 7.739870
+eval mean vote_loss: 0.463708
+eval bathtub Average Precision: 0.790348
+eval bed Average Precision: 0.821342
+eval bookshelf Average Precision: 0.390567
+eval cabinet Average Precision: 0.324160
+eval chair Average Precision: 0.837158
+eval counter Average Precision: 0.423452
+eval curtain Average Precision: 0.411870
+eval desk Average Precision: 0.631147
+eval door Average Precision: 0.382173
+eval otherfurniture Average Precision: 0.312411
+eval picture Average Precision: 0.025902
+eval refrigerator Average Precision: 0.389176
+eval showercurtain Average Precision: 0.497437
+eval sink Average Precision: 0.449897
+eval sofa Average Precision: 0.865317
+eval table Average Precision: 0.556731
+eval toilet Average Precision: 0.911251
+eval window Average Precision: 0.294851
+eval mAP: 0.517511
+eval bathtub Recall: 0.967742
+eval bed Recall: 0.950617
+eval bookshelf Recall: 0.792208
+eval cabinet Recall: 0.690860
+eval chair Recall: 0.891813
+eval counter Recall: 0.807692
+eval curtain Recall: 0.716418
+eval desk Recall: 0.921260
+eval door Recall: 0.689507
+eval otherfurniture Recall: 0.639623
+eval picture Recall: 0.126126
+eval refrigerator Recall: 0.929825
+eval showercurtain Recall: 0.892857
+eval sink Recall: 0.602041
+eval sofa Recall: 0.979381
+eval table Recall: 0.811429
+eval toilet Recall: 1.000000
+eval window Recall: 0.602837
+eval AR: 0.778458
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: basetrain
+model_checkpoint_path: log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.1718, -0.0999,  0.0993,  ...,  0.0261,  0.2414,  0.2866],
+        [-0.1269, -0.0711,  0.1518,  ..., -0.1038, -0.0565,  0.0088],
+        [-0.0284,  0.0333,  0.0922,  ...,  0.0054,  0.1852, -0.1290]])
+2024-09-23 15:55:51.198450
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.0867,  0.0677, -0.1231,  ..., -0.0377,  0.0340, -0.6755],
+        [-0.3519, -0.2510, -0.4561,  ..., -0.2127, -0.0794, -0.1353],
+        [-0.2690,  0.1214, -0.4790,  ...,  0.2011, -0.3543,  0.0474],
+        ...,
+        [-0.0077, -0.1397,  0.0936,  ...,  0.1554,  0.1695,  0.2603],
+        [ 0.1264, -0.2638,  0.2600,  ..., -0.0711, -0.7856, -0.4621],
+        [-0.0833,  0.0970, -0.5221,  ..., -0.0489, -0.2655, -0.1099]],
+       device='cuda:0')
+eval mean box_loss: 0.134006
+eval mean center_loss: 0.057829
+eval mean detection_loss: 0.310279
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.550005
+eval mean obj_acc: 0.879534
+eval mean objectness_loss: 0.102437
+eval mean pos_ratio: 0.145908
+eval mean sem_cls_loss: 0.625270
+eval mean size_reg_loss: 0.076177
+eval mean supervised_loss: 7.739870
+eval mean vote_loss: 0.463708
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: basetrain
+model_checkpoint_path: log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.1718, -0.0999,  0.0993,  ...,  0.0261,  0.2414,  0.2866],
+        [-0.1269, -0.0711,  0.1518,  ..., -0.1038, -0.0565,  0.0088],
+        [-0.0284,  0.0333,  0.0922,  ...,  0.0054,  0.1852, -0.1290]])
+2024-09-23 15:58:40.990863
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.0867,  0.0677, -0.1231,  ..., -0.0377,  0.0340, -0.6755],
+        [-0.3519, -0.2510, -0.4561,  ..., -0.2127, -0.0794, -0.1353],
+        [-0.2690,  0.1214, -0.4790,  ...,  0.2011, -0.3543,  0.0474],
+        ...,
+        [-0.0077, -0.1397,  0.0936,  ...,  0.1554,  0.1695,  0.2603],
+        [ 0.1264, -0.2638,  0.2600,  ..., -0.0711, -0.7856, -0.4621],
+        [-0.0833,  0.0970, -0.5221,  ..., -0.0489, -0.2655, -0.1099]],
+       device='cuda:0')
+eval mean box_loss: 0.134006
+eval mean center_loss: 0.057829
+eval mean detection_loss: 0.310279
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.550005
+eval mean obj_acc: 0.879534
+eval mean objectness_loss: 0.102437
+eval mean pos_ratio: 0.145908
+eval mean sem_cls_loss: 0.625270
+eval mean size_reg_loss: 0.076177
+eval mean supervised_loss: 7.739870
+eval mean vote_loss: 0.463708
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: basetrain
+model_checkpoint_path: log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.1718, -0.0999,  0.0993,  ...,  0.0261,  0.2414,  0.2866],
+        [-0.1269, -0.0711,  0.1518,  ..., -0.1038, -0.0565,  0.0088],
+        [-0.0284,  0.0333,  0.0922,  ...,  0.0054,  0.1852, -0.1290]])
+2024-09-23 16:03:32.102462
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.0867,  0.0677, -0.1231,  ..., -0.0377,  0.0340, -0.6755],
+        [-0.3519, -0.2510, -0.4561,  ..., -0.2127, -0.0794, -0.1353],
+        [-0.2690,  0.1214, -0.4790,  ...,  0.2011, -0.3543,  0.0474],
+        ...,
+        [-0.0077, -0.1397,  0.0936,  ...,  0.1554,  0.1695,  0.2603],
+        [ 0.1264, -0.2638,  0.2600,  ..., -0.0711, -0.7856, -0.4621],
+        [-0.0833,  0.0970, -0.5221,  ..., -0.0489, -0.2655, -0.1099]],
+       device='cuda:0')
+eval mean box_loss: 0.134006
+eval mean center_loss: 0.057829
+eval mean detection_loss: 0.310279
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.550005
+eval mean obj_acc: 0.879534
+eval mean objectness_loss: 0.102437
+eval mean pos_ratio: 0.145908
+eval mean sem_cls_loss: 0.625270
+eval mean size_reg_loss: 0.076177
+eval mean supervised_loss: 7.739870
+eval mean vote_loss: 0.463708
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: basetrain
+model_checkpoint_path: log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.1718, -0.0999,  0.0993,  ...,  0.0261,  0.2414,  0.2866],
+        [-0.1269, -0.0711,  0.1518,  ..., -0.1038, -0.0565,  0.0088],
+        [-0.0284,  0.0333,  0.0922,  ...,  0.0054,  0.1852, -0.1290]])
+2024-09-23 16:09:52.690446
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.0867,  0.0677, -0.1231,  ..., -0.0377,  0.0340, -0.6755],
+        [-0.3519, -0.2510, -0.4561,  ..., -0.2127, -0.0794, -0.1353],
+        [-0.2690,  0.1214, -0.4790,  ...,  0.2011, -0.3543,  0.0474],
+        ...,
+        [-0.0077, -0.1397,  0.0936,  ...,  0.1554,  0.1695,  0.2603],
+        [ 0.1264, -0.2638,  0.2600,  ..., -0.0711, -0.7856, -0.4621],
+        [-0.0833,  0.0970, -0.5221,  ..., -0.0489, -0.2655, -0.1099]],
+       device='cuda:0')
+eval mean box_loss: 0.134006
+eval mean center_loss: 0.057829
+eval mean detection_loss: 0.310279
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.550005
+eval mean obj_acc: 0.879534
+eval mean objectness_loss: 0.102437
+eval mean pos_ratio: 0.145908
+eval mean sem_cls_loss: 0.625270
+eval mean size_reg_loss: 0.076177
+eval mean supervised_loss: 7.739870
+eval mean vote_loss: 0.463708
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: basetrain
+model_checkpoint_path: log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.1718, -0.0999,  0.0993,  ...,  0.0261,  0.2414,  0.2866],
+        [-0.1269, -0.0711,  0.1518,  ..., -0.1038, -0.0565,  0.0088],
+        [-0.0284,  0.0333,  0.0922,  ...,  0.0054,  0.1852, -0.1290]])
+2024-09-23 16:34:23.483899
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.0867,  0.0677, -0.1231,  ..., -0.0377,  0.0340, -0.6755],
+        [-0.3519, -0.2510, -0.4561,  ..., -0.2127, -0.0794, -0.1353],
+        [-0.2690,  0.1214, -0.4790,  ...,  0.2011, -0.3543,  0.0474],
+        ...,
+        [-0.0077, -0.1397,  0.0936,  ...,  0.1554,  0.1695,  0.2603],
+        [ 0.1264, -0.2638,  0.2600,  ..., -0.0711, -0.7856, -0.4621],
+        [-0.0833,  0.0970, -0.5221,  ..., -0.0489, -0.2655, -0.1099]],
+       device='cuda:0')
+eval mean box_loss: 0.134006
+eval mean center_loss: 0.057829
+eval mean detection_loss: 0.310279
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.550005
+eval mean obj_acc: 0.879534
+eval mean objectness_loss: 0.102437
+eval mean pos_ratio: 0.145908
+eval mean sem_cls_loss: 0.625270
+eval mean size_reg_loss: 0.076177
+eval mean supervised_loss: 7.739870
+eval mean vote_loss: 0.463708
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: basetrain
+model_checkpoint_path: log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.1718, -0.0999,  0.0993,  ...,  0.0261,  0.2414,  0.2866],
+        [-0.1269, -0.0711,  0.1518,  ..., -0.1038, -0.0565,  0.0088],
+        [-0.0284,  0.0333,  0.0922,  ...,  0.0054,  0.1852, -0.1290]])
+2024-09-23 16:49:16.031393
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.0867,  0.0677, -0.1231,  ..., -0.0377,  0.0340, -0.6755],
+        [-0.3519, -0.2510, -0.4561,  ..., -0.2127, -0.0794, -0.1353],
+        [-0.2690,  0.1214, -0.4790,  ...,  0.2011, -0.3543,  0.0474],
+        ...,
+        [-0.0077, -0.1397,  0.0936,  ...,  0.1554,  0.1695,  0.2603],
+        [ 0.1264, -0.2638,  0.2600,  ..., -0.0711, -0.7856, -0.4621],
+        [-0.0833,  0.0970, -0.5221,  ..., -0.0489, -0.2655, -0.1099]],
+       device='cuda:0')
+eval mean box_loss: 0.134006
+eval mean center_loss: 0.057829
+eval mean detection_loss: 0.310279
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.550005
+eval mean obj_acc: 0.879534
+eval mean objectness_loss: 0.102437
+eval mean pos_ratio: 0.145908
+eval mean sem_cls_loss: 0.625270
+eval mean size_reg_loss: 0.076177
+eval mean supervised_loss: 7.739870
+eval mean vote_loss: 0.463708
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: basetrain
+model_checkpoint_path: log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.1718, -0.0999,  0.0993,  ...,  0.0261,  0.2414,  0.2866],
+        [-0.1269, -0.0711,  0.1518,  ..., -0.1038, -0.0565,  0.0088],
+        [-0.0284,  0.0333,  0.0922,  ...,  0.0054,  0.1852, -0.1290]])
+2024-09-23 17:15:06.409954
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.0867,  0.0677, -0.1231,  ..., -0.0377,  0.0340, -0.6755],
+        [-0.3519, -0.2510, -0.4561,  ..., -0.2127, -0.0794, -0.1353],
+        [-0.2690,  0.1214, -0.4790,  ...,  0.2011, -0.3543,  0.0474],
+        ...,
+        [-0.0077, -0.1397,  0.0936,  ...,  0.1554,  0.1695,  0.2603],
+        [ 0.1264, -0.2638,  0.2600,  ..., -0.0711, -0.7856, -0.4621],
+        [-0.0833,  0.0970, -0.5221,  ..., -0.0489, -0.2655, -0.1099]],
+       device='cuda:0')
+eval mean box_loss: 0.134006
+eval mean center_loss: 0.057829
+eval mean detection_loss: 0.310279
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.550005
+eval mean obj_acc: 0.879534
+eval mean objectness_loss: 0.102437
+eval mean pos_ratio: 0.145908
+eval mean sem_cls_loss: 0.625270
+eval mean size_reg_loss: 0.076177
+eval mean supervised_loss: 7.739870
+eval mean vote_loss: 0.463708
+eval bathtub Average Precision: 0.790348
+eval bed Average Precision: 0.821342
+eval bookshelf Average Precision: 0.390567
+eval cabinet Average Precision: 0.324160
+eval chair Average Precision: 0.837158
+eval counter Average Precision: 0.423452
+eval curtain Average Precision: 0.411870
+eval desk Average Precision: 0.631147
+eval door Average Precision: 0.382173
+eval otherfurniture Average Precision: 0.312411
+eval picture Average Precision: 0.025902
+eval refrigerator Average Precision: 0.389176
+eval showercurtain Average Precision: 0.497437
+eval sink Average Precision: 0.449897
+eval sofa Average Precision: 0.865317
+eval table Average Precision: 0.556731
+eval toilet Average Precision: 0.911251
+eval window Average Precision: 0.294851
+eval mAP: 0.517511
+eval bathtub Recall: 0.967742
+eval bed Recall: 0.950617
+eval bookshelf Recall: 0.792208
+eval cabinet Recall: 0.690860
+eval chair Recall: 0.891813
+eval counter Recall: 0.807692
+eval curtain Recall: 0.716418
+eval desk Recall: 0.921260
+eval door Recall: 0.689507
+eval otherfurniture Recall: 0.639623
+eval picture Recall: 0.126126
+eval refrigerator Recall: 0.929825
+eval showercurtain Recall: 0.892857
+eval sink Recall: 0.602041
+eval sofa Recall: 0.979381
+eval table Recall: 0.811429
+eval toilet Recall: 1.000000
+eval window Recall: 0.602837
+eval AR: 0.778458
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: basetrain
+model_checkpoint_path: log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.1718, -0.0999,  0.0993,  ...,  0.0261,  0.2414,  0.2866],
+        [-0.1269, -0.0711,  0.1518,  ..., -0.1038, -0.0565,  0.0088],
+        [-0.0284,  0.0333,  0.0922,  ...,  0.0054,  0.1852, -0.1290]])
+2024-09-23 21:58:57.355340
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.0867,  0.0677, -0.1231,  ..., -0.0377,  0.0340, -0.6755],
+        [-0.3519, -0.2510, -0.4561,  ..., -0.2127, -0.0794, -0.1353],
+        [-0.2690,  0.1214, -0.4790,  ...,  0.2011, -0.3543,  0.0474],
+        ...,
+        [-0.0077, -0.1397,  0.0936,  ...,  0.1554,  0.1695,  0.2603],
+        [ 0.1264, -0.2638,  0.2600,  ..., -0.0711, -0.7856, -0.4621],
+        [-0.0833,  0.0970, -0.5221,  ..., -0.0489, -0.2655, -0.1099]],
+       device='cuda:0')
+eval mean box_loss: 0.134006
+eval mean center_loss: 0.057829
+eval mean detection_loss: 0.310279
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.550005
+eval mean obj_acc: 0.879534
+eval mean objectness_loss: 0.102437
+eval mean pos_ratio: 0.145908
+eval mean sem_cls_loss: 0.625270
+eval mean size_reg_loss: 0.076177
+eval mean supervised_loss: 7.739870
+eval mean vote_loss: 0.463708
+eval bathtub Average Precision: 0.790348
+eval bed Average Precision: 0.821342
+eval bookshelf Average Precision: 0.390567
+eval cabinet Average Precision: 0.324160
+eval chair Average Precision: 0.837158
+eval counter Average Precision: 0.423452
+eval curtain Average Precision: 0.411870
+eval desk Average Precision: 0.631147
+eval door Average Precision: 0.382173
+eval otherfurniture Average Precision: 0.312411
+eval picture Average Precision: 0.025902
+eval refrigerator Average Precision: 0.389176
+eval showercurtain Average Precision: 0.497437
+eval sink Average Precision: 0.449897
+eval sofa Average Precision: 0.865317
+eval table Average Precision: 0.556731
+eval toilet Average Precision: 0.911251
+eval window Average Precision: 0.294851
+eval mAP: 0.517511
+eval bathtub Recall: 0.967742
+eval bed Recall: 0.950617
+eval bookshelf Recall: 0.792208
+eval cabinet Recall: 0.690860
+eval chair Recall: 0.891813
+eval counter Recall: 0.807692
+eval curtain Recall: 0.716418
+eval desk Recall: 0.921260
+eval door Recall: 0.689507
+eval otherfurniture Recall: 0.639623
+eval picture Recall: 0.126126
+eval refrigerator Recall: 0.929825
+eval showercurtain Recall: 0.892857
+eval sink Recall: 0.602041
+eval sofa Recall: 0.979381
+eval table Recall: 0.811429
+eval toilet Recall: 1.000000
+eval window Recall: 0.602837
+eval AR: 0.778458
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: basetrain
+model_checkpoint_path: log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.1718, -0.0999,  0.0993,  ...,  0.0261,  0.2414,  0.2866],
+        [-0.1269, -0.0711,  0.1518,  ..., -0.1038, -0.0565,  0.0088],
+        [-0.0284,  0.0333,  0.0922,  ...,  0.0054,  0.1852, -0.1290]])
+2024-09-23 22:07:35.241048
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.0867,  0.0677, -0.1231,  ..., -0.0377,  0.0340, -0.6755],
+        [-0.3519, -0.2510, -0.4561,  ..., -0.2127, -0.0794, -0.1353],
+        [-0.2690,  0.1214, -0.4790,  ...,  0.2011, -0.3543,  0.0474],
+        ...,
+        [-0.0077, -0.1397,  0.0936,  ...,  0.1554,  0.1695,  0.2603],
+        [ 0.1264, -0.2638,  0.2600,  ..., -0.0711, -0.7856, -0.4621],
+        [-0.0833,  0.0970, -0.5221,  ..., -0.0489, -0.2655, -0.1099]],
+       device='cuda:0')
+eval mean box_loss: 0.134006
+eval mean center_loss: 0.057829
+eval mean detection_loss: 0.310279
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.550005
+eval mean obj_acc: 0.879534
+eval mean objectness_loss: 0.102437
+eval mean pos_ratio: 0.145908
+eval mean sem_cls_loss: 0.625270
+eval mean size_reg_loss: 0.076177
+eval mean supervised_loss: 7.739870
+eval mean vote_loss: 0.463708
+eval bathtub Average Precision: 0.790348
+eval bed Average Precision: 0.821342
+eval bookshelf Average Precision: 0.390567
+eval cabinet Average Precision: 0.324160
+eval chair Average Precision: 0.837158
+eval counter Average Precision: 0.423452
+eval curtain Average Precision: 0.411870
+eval desk Average Precision: 0.631147
+eval door Average Precision: 0.382173
+eval otherfurniture Average Precision: 0.312411
+eval picture Average Precision: 0.025902
+eval refrigerator Average Precision: 0.389176
+eval showercurtain Average Precision: 0.497437
+eval sink Average Precision: 0.449897
+eval sofa Average Precision: 0.865317
+eval table Average Precision: 0.556731
+eval toilet Average Precision: 0.911251
+eval window Average Precision: 0.294851
+eval mAP: 0.517511
+eval bathtub Recall: 0.967742
+eval bed Recall: 0.950617
+eval bookshelf Recall: 0.792208
+eval cabinet Recall: 0.690860
+eval chair Recall: 0.891813
+eval counter Recall: 0.807692
+eval curtain Recall: 0.716418
+eval desk Recall: 0.921260
+eval door Recall: 0.689507
+eval otherfurniture Recall: 0.639623
+eval picture Recall: 0.126126
+eval refrigerator Recall: 0.929825
+eval showercurtain Recall: 0.892857
+eval sink Recall: 0.602041
+eval sofa Recall: 0.979381
+eval table Recall: 0.811429
+eval toilet Recall: 1.000000
+eval window Recall: 0.602837
+eval AR: 0.778458
+------------ Ground Truths Dataframe: ------------: 
+
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: basetrain
+model_checkpoint_path: log_scannet/log_basetrain_20240921-14:32__18classes_sela_loss_and_new_nms_gamma0.1
+model_name: None
+n_epochs: 150
+n_novel_class: 0
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[-0.1499, -0.1868, -0.0620,  ..., -0.1261, -0.0177,  0.0394],
+        [ 0.1246,  0.0331,  0.1076,  ..., -0.0299, -0.0162, -0.0890],
+        [-0.1065, -0.1425, -0.1273,  ...,  0.0320,  0.0973,  0.1889],
+        ...,
+        [ 0.1718, -0.0999,  0.0993,  ...,  0.0261,  0.2414,  0.2866],
+        [-0.1269, -0.0711,  0.1518,  ..., -0.1038, -0.0565,  0.0088],
+        [-0.0284,  0.0333,  0.0922,  ...,  0.0054,  0.1852, -0.1290]])
+2024-09-23 22:14:20.309407
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.0867,  0.0677, -0.1231,  ..., -0.0377,  0.0340, -0.6755],
+        [-0.3519, -0.2510, -0.4561,  ..., -0.2127, -0.0794, -0.1353],
+        [-0.2690,  0.1214, -0.4790,  ...,  0.2011, -0.3543,  0.0474],
+        ...,
+        [-0.0077, -0.1397,  0.0936,  ...,  0.1554,  0.1695,  0.2603],
+        [ 0.1264, -0.2638,  0.2600,  ..., -0.0711, -0.7856, -0.4621],
+        [-0.0833,  0.0970, -0.5221,  ..., -0.0489, -0.2655, -0.1099]],
+       device='cuda:0')
+eval mean box_loss: 0.134006
+eval mean center_loss: 0.057829
+eval mean detection_loss: 0.310279
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.550005
+eval mean obj_acc: 0.879534
+eval mean objectness_loss: 0.102437
+eval mean pos_ratio: 0.145908
+eval mean sem_cls_loss: 0.625270
+eval mean size_reg_loss: 0.076177
+eval mean supervised_loss: 7.739870
+eval mean vote_loss: 0.463708
+eval bathtub Average Precision: 0.790348
+eval bed Average Precision: 0.821342
+eval bookshelf Average Precision: 0.390567
+eval cabinet Average Precision: 0.324160
+eval chair Average Precision: 0.837158
+eval counter Average Precision: 0.423452
+eval curtain Average Precision: 0.411870
+eval desk Average Precision: 0.631147
+eval door Average Precision: 0.382173
+eval otherfurniture Average Precision: 0.312411
+eval picture Average Precision: 0.025902
+eval refrigerator Average Precision: 0.389176
+eval showercurtain Average Precision: 0.497437
+eval sink Average Precision: 0.449897
+eval sofa Average Precision: 0.865317
+eval table Average Precision: 0.556731
+eval toilet Average Precision: 0.911251
+eval window Average Precision: 0.294851
+eval mAP: 0.517511
+eval bathtub Recall: 0.967742
+eval bed Recall: 0.950617
+eval bookshelf Recall: 0.792208
+eval cabinet Recall: 0.690860
+eval chair Recall: 0.891813
+eval counter Recall: 0.807692
+eval curtain Recall: 0.716418
+eval desk Recall: 0.921260
+eval door Recall: 0.689507
+eval otherfurniture Recall: 0.639623
+eval picture Recall: 0.126126
+eval refrigerator Recall: 0.929825
+eval showercurtain Recall: 0.892857
+eval sink Recall: 0.602041
+eval sofa Recall: 0.979381
+eval table Recall: 0.811429
+eval toilet Recall: 1.000000
+eval window Recall: 0.602837
+eval AR: 0.778458
+------------ Ground Truths Dataframe: ------------: 
+

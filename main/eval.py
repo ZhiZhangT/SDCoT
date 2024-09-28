@@ -13,6 +13,7 @@ import torch.backends
 import torch.backends.cudnn
 from torch.utils.data import DataLoader, SequentialSampler
 import random
+import pandas as pd
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
@@ -65,7 +66,7 @@ def evaluate(args, model, dataloader, logger, device, dataset_config, dataset):
         for key in batch_data_label:
             assert (key not in end_points)
             end_points[key] = batch_data_label[key]
-        loss, end_points = get_supervised_loss(end_points, dataset_config, sela=True) # Set to True for testing purposes, should be False.
+        loss, end_points = get_supervised_loss(end_points, dataset_config, sela=False)
 
         # Accumulate statistics and print out
         for key in end_points:
@@ -83,7 +84,8 @@ def evaluate(args, model, dataloader, logger, device, dataset_config, dataset):
 
     # Evaluate average precision and per-object accuracy
     # Pass in the dataset so that we can map the img_id to the scan name
-    metrics_dict, gt_df = ap_calculator.compute_metrics(dataset)
+    # metrics_dict, gt_df = ap_calculator.compute_metrics(dataset)
+    metrics_dict, gt_df, sz_metrics_dict = ap_calculator.compute_metrics(dataset)
     for key in metrics_dict:
         logger.cprint('eval %s: %f' % (key, metrics_dict[key]))
 
@@ -94,7 +96,7 @@ def evaluate(args, model, dataloader, logger, device, dataset_config, dataset):
 
     # Save DataFrame as CSV
     csv_file_path = f'gt_df_results_{str(datetime.now())}.csv'
-    gt_df.to_csv(csv_file_path, index=False)
+    gt_df.to_csv(csv_file_path, index=True)
     
     # logger.cprint(f"------------ Saving pseudo bboxes: ------------: \n")
     # point_cloud = dataset[46]['point_clouds']
@@ -110,6 +112,14 @@ def evaluate(args, model, dataloader, logger, device, dataset_config, dataset):
 
     # np.save(os.path.join(save_dir, f'{scan_name}_pseudo_bboxes_0.95.npy'), pseudo_bboxes)
 
+    # Save the sz_metrics_dict to a CSV file
+    print(sz_metrics_dict)
+    sz_metrics_dict_df = pd.DataFrame.from_dict(sz_metrics_dict, orient='index')
+    sz_metrics_dict_df.reset_index(inplace=True)
+    sz_metrics_dict_df.rename(columns={'index': 'zone_index'}, inplace=True)
+    print(sz_metrics_dict_df)
+
+    sz_metrics_dict_df.to_csv(f'sz_metrics_dict_{str(datetime.now())}.csv', index=[0])
 
 def main(args):
     logger = init_logger(args)

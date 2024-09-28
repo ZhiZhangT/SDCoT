@@ -10,6 +10,8 @@ import sys
 import numpy as np
 import torch
 
+from utils.eval_det import eval_det_spatialzones_multiprocessing
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
@@ -43,7 +45,7 @@ def softmax(x):
     probs /= np.sum(probs, axis=len(shape)-1, keepdims=True)
     return probs
 
-def parse_prediction_to_pseudo_bboxes(end_points, config_dict, point_clouds, sela=True):
+def parse_prediction_to_pseudo_bboxes(end_points, config_dict, point_clouds, sela=False):
     """ Parse predictions to OBB parameters and suppress overlapping boxes
 
     Args:
@@ -95,7 +97,7 @@ def parse_prediction_to_pseudo_bboxes(end_points, config_dict, point_clouds, sel
     
     if sela:
         end_points['point_clouds'] = point_clouds
-        print("Shape of point clouds", point_clouds.shape)
+        # print("Shape of point clouds", point_clouds.shape)
         alpha = calculate_alpha(end_points)
 
     if config_dict['remove_empty_box']:
@@ -192,7 +194,7 @@ def parse_prediction_to_pseudo_bboxes(end_points, config_dict, point_clouds, sel
         return pred_bboxes
 
 
-def parse_predictions(end_points, config_dict, sela=True):
+def parse_predictions(end_points, config_dict, sela=False):
     """ Parse predictions to OBB parameters and suppress overlapping boxes
     
     Args:
@@ -450,7 +452,59 @@ class APCalculator(object):
         # save the bounding boxes for visualization:
         # save_gt_pred_bboxes(self.pred_map_cls, self.gt_map_cls, img_id=7, save_dir='gt_pred_bboxes', dataset=dataset)
 
-        return ret_dict, gt_df
+        # Retrieve the spatial zones metrics:
+        sz_rec, sz_prec, sz_ap = eval_det_spatialzones_multiprocessing(
+            self.pred_map_cls, self.gt_map_cls,
+            ovthresh=self.ap_iou_thresh, get_iou_func=get_iou_obb, n=4
+        )
+
+        sz_dict = {}
+
+        # Collect all AP values to compute overall mAP
+        all_ap_values = []
+        for zone_index in sorted(sz_ap.keys()):
+            zone_ap = sz_ap[zone_index]  # {classname: ap_value}
+            for classname in zone_ap:
+                ap_value = zone_ap[classname]
+                sz_dict['Zone %s %s Average Precision' % (zone_index, classname)] = ap_value
+                all_ap_values.append(ap_value)
+
+        # Compute overall mAP
+        if all_ap_values:
+            sz_dict['mAP'] = np.mean(all_ap_values)
+        else:
+            sz_dict['mAP'] = 0.0
+            
+        # Compute mAP per zone
+        for zone_index in sorted(sz_ap.keys()):
+            zone_ap_values = list(sz_ap[zone_index].values())
+            if zone_ap_values:
+                zone_mAP = np.mean(zone_ap_values)
+            else:
+                zone_mAP = 0.0
+            sz_dict['Zone %s mAP' % (zone_index)] = zone_mAP
+
+        # Collect all Recall values to compute overall AR
+        all_rec_values = []
+        for zone_index in sorted(sz_rec.keys()):
+            zone_rec = sz_rec[zone_index]  # {classname: rec_array}
+            for classname in zone_rec:
+                rec_array = sz_rec[zone_index][classname]
+                if len(rec_array) > 0:
+                    rec_value = rec_array[-1]
+                else:
+                    rec_value = 0.0
+                sz_dict['Zone %s %s Recall' % (zone_index, classname)] = rec_value
+                all_rec_values.append(rec_value)
+
+        # Compute overall AR
+        if all_rec_values:
+            sz_dict['AR'] = np.mean(all_rec_values)
+        else:
+            sz_dict['AR'] = 0.0
+
+        return ret_dict, gt_df, sz_dict
+        # return ret_dict, gt_df
 
     def reset(self):
         self.gt_map_cls = {} # {scan_id: [(classname, bbox)]}

@@ -1,0 +1,133 @@
+(venv) peisheng@HPC1:~/SDCoT$ CUDA_VISIBLE_DEVICES=0 python main/eval.py --phase test --method SDCoT --dataset scannet --num_point 40000 --model_checkpoint_path log_scannet/log_SDCoT_20240525-22:28 --
+n_novel_class 9 --cluster_sampling vote_fps --use_3d_nms --use_cls_nms --per_class_proposal
+------------ Options -------------
+ap_iou_threshold: 0.25
+batch_size: 8
+bn_decay_rate: 0.5
+bn_decay_step: 20
+cluster_sampling: vote_fps
+conf_thresh: 0.05
+consistency_ramp_len: 30
+consistency_weight: 10.0
+dataset: scannet
+distillation_ramp_len: 30
+distillation_weight: 1.0
+ema_decay: 0.999
+faster_eval: False
+ft_layers: all
+log_dir: /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28
+lr: 0.001
+lr_decay_rate: 0.1
+lr_decay_steps: [80, 120]
+method: SDCoT
+model_checkpoint_path: log_scannet/log_SDCoT_20240525-22:28
+model_name: None
+n_epochs: 150
+n_novel_class: 9
+nms_iou: 0.25
+no_height: False
+num_input_channel: 1
+num_point: 40000
+num_target: 128
+pc_augm: False
+per_class_proposal: True
+phase: test
+pseudo_cls_conf_thresh: 0.9
+pseudo_obj_conf_thresh: 0.95
+use_3d_nms: True
+use_cls_nms: True
+use_color: False
+use_old_type_nms: False
+vote_factor: 1
+-------------- End ----------------
+
+Testing classes: ['bathtub', 'bed', 'bookshelf', 'cabinet', 'chair', 'counter', 'curtain', 'desk', 'door', 'otherfurniture', 'picture', 'refrigerator', 'showercurtain', 'sink', 'sofa', 'table', 'toilet', 'window'] | number of scenes: 312
+------------ **BEFORE** Classifier Weights Learned:------------  
+ tensor([[ 0.0387, -0.2004,  0.1792,  ..., -0.0484, -0.1748, -0.0370],
+        [-0.0068,  0.1130, -0.1400,  ..., -0.0595,  0.1685,  0.1779],
+        [-0.0018,  0.1405, -0.0542,  ...,  0.1063,  0.2354, -0.0695],
+        ...,
+        [ 0.1186,  0.0174, -0.0487,  ...,  0.0504, -0.0425, -0.1789],
+        [-0.0651, -0.0583, -0.0455,  ...,  0.0125, -0.0264, -0.2194],
+        [-0.3977, -0.1114, -0.1730,  ..., -0.0188,  0.2606, -0.0701]])
+loaded /home/peisheng/SDCoT/log_scannet/log_SDCoT_20240525-22:28/checkpoint.tar, epoch 121
+2024-06-15 14:18:58.160050
+------------ **AFTER** Classifier Weights Learned:------------  
+ tensor([[-0.9887,  0.0831,  0.2657,  ...,  0.2803, -0.3015, -0.3737],
+        [-0.6790, -0.5265, -0.7210,  ..., -0.6211, -0.7452, -0.0932],
+        [ 0.1609, -0.0690,  0.3380,  ..., -0.7102, -0.2592,  0.1266],
+        ...,
+        [ 0.3988,  0.2122,  0.2055,  ...,  0.2838,  0.2724,  0.0525],
+        [ 0.0017, -0.3195,  0.0549,  ...,  0.2389, -0.0310,  0.0870],
+        [ 0.1282, -0.4203, -0.2085,  ...,  0.2685,  0.4439,  0.2664]],
+       device='cuda:0')
+Eval batch: 0
+eval mean box_loss: 0.133371
+eval mean center_loss: 0.055191
+eval mean detection_loss: 0.307584
+eval mean heading_cls_loss: 0.000000
+eval mean heading_reg_loss: 0.000000
+eval mean neg_ratio: 0.505258
+eval mean obj_acc: 0.888323
+eval mean objectness_loss: 0.123279
+eval mean pos_ratio: 0.175331
+eval mean sem_cls_loss: 0.562867
+eval mean size_reg_loss: 0.078181
+eval mean supervised_loss: 7.038287
+eval mean vote_loss: 0.396244
+0 0.530987972342825
+1 0.8408938978072099
+2 0.4420211322361549
+3 0.30856864108646215
+4 0.8547834783362204
+5 0.5420626135494959
+6 0.352532759339974
+7 0.6372074004338066
+8 0.3736810913055302
+9 0.3964046109952278
+10 0.06568610221776894
+11 0.5375045097221092
+12 0.6504384421645246
+13 0.4050451119995923
+14 0.8618413740447987
+15 0.6181603822463251
+16 0.9243267341903098
+17 0.31370751343888237
+eval bathtub Average Precision: 0.530988
+eval bed Average Precision: 0.840894
+eval bookshelf Average Precision: 0.442021
+eval cabinet Average Precision: 0.308569
+eval chair Average Precision: 0.854783
+eval counter Average Precision: 0.542063
+eval curtain Average Precision: 0.352533
+eval desk Average Precision: 0.637207
+eval door Average Precision: 0.373681
+eval otherfurniture Average Precision: 0.396405
+eval picture Average Precision: 0.065686
+eval refrigerator Average Precision: 0.537505
+eval showercurtain Average Precision: 0.650438
+eval sink Average Precision: 0.405045
+eval sofa Average Precision: 0.861841
+eval table Average Precision: 0.618160
+eval toilet Average Precision: 0.924327
+eval window Average Precision: 0.313708
+eval mAP: 0.536436
+eval bathtub Recall: 0.935484
+eval bed Recall: 0.913580
+eval bookshelf Recall: 0.701299
+eval cabinet Recall: 0.599462
+eval chair Recall: 0.902778
+eval counter Recall: 0.769231
+eval curtain Recall: 0.671642
+eval desk Recall: 0.881890
+eval door Recall: 0.565310
+eval otherfurniture Recall: 0.654717
+eval picture Recall: 0.184685
+eval refrigerator Recall: 0.877193
+eval showercurtain Recall: 0.821429
+eval sink Recall: 0.622449
+eval sofa Recall: 0.969072
+eval table Recall: 0.814286
+eval toilet Recall: 0.965517
+eval window Recall: 0.546099
+eval AR: 0.744229

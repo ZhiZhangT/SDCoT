@@ -86,7 +86,7 @@ def nms_2d_faster(boxes, overlap_threshold, old_type=False):
     return pick
 
 def nms_2d_faster_sela(boxes, overlap_threshold, alpha, old_type=False, gamma=1):
-    print("Using nms_2d_faster_sela")
+    # print("Using nms_2d_faster_sela")
     
     thresholds = overlap_threshold - gamma * alpha
     
@@ -172,7 +172,7 @@ def nms_3d_faster(boxes, overlap_threshold, old_type=False):  # Used by SDCoT
     return pick
 
 def nms_3d_faster_sela(boxes, overlap_threshold, alpha, old_type=False, gamma=1):  # Used by SDCoT
-    print("Using nms_3d_faster_sela")
+    # print("Using nms_3d_faster_sela")
     thresholds = overlap_threshold - gamma * alpha
     
     # print("shape of thresholds: ", thresholds.shape)
@@ -219,13 +219,14 @@ def nms_3d_faster_sela(boxes, overlap_threshold, alpha, old_type=False, gamma=1)
         else: # new type of nms
             inter = l*w*h
             o = inter / (area[i] + area[I[:last-1]] - inter) # IoU score
-
-        I = np.delete(I, np.concatenate(([last-1], np.where(o>thresholds[i])[0]))) # delete all indexes from the indexes list that are in the suppress list
+            
+        thresholds = overlap_threshold - gamma * alpha[I[:last - 1]]
+        I = np.delete(I, np.concatenate(([last-1], np.where(o>thresholds)[0]))) # delete all indexes from the indexes list that are in the suppress list
 
     return pick
 
 
-def nms_3d_faster_samecls(boxes, overlap_threshold, old_type=False):
+def nms_3d_faster_samecls(boxes, overlap_threshold, old_type=False):    # Used during basetraining
     # print("Using nms_3d_faster_samecls")
     
     # print("Shape of boxes is", boxes.shape)
@@ -283,13 +284,13 @@ def nms_3d_faster_samecls(boxes, overlap_threshold, old_type=False):
     return pick
 
 
-def nms_3d_faster_samecls_sela(boxes, overlap_threshold, alpha, old_type=False, gamma=1):
-    print("Using nms_3d_faster_samecls_sela")
+def nms_3d_faster_samecls_sela(boxes, overlap_threshold, alpha, old_type=False, gamma=0.1):
+    # print("Using nms_3d_faster_samecls_sela")
     
-    thresholds = overlap_threshold - gamma * alpha
-    print("shape of thresholds: ", thresholds.shape)
+    thresholds = overlap_threshold + gamma * alpha
+    # thresholds is a 1D array of shape (n,) where n is the number of boxes
     
-    print("Shape of boxes is", boxes.shape)
+    # print("Shape of boxes is", boxes.shape)
     x1 = boxes[:,0]
     y1 = boxes[:,1]
     z1 = boxes[:,2]
@@ -338,13 +339,16 @@ def nms_3d_faster_samecls_sela(boxes, overlap_threshold, alpha, old_type=False, 
 
         o = o * (cls1==cls2) # only consider the boxes with the same class label
 
+        # print("thresholds[i]: ", thresholds[i])
+        # print("np.where(o>thresholds[i]) : ", np.where(o>thresholds[i]))
+        # print("np.where(o>thresholds[i])[0] : ", np.where(o>thresholds[i])[0])
         I = np.delete(I, np.concatenate(([last-1], np.where(o>thresholds[i])[0]))) # delete all indexes from the indexes list that are in the suppress list
 
     return pick
 
 
 def nms_crnr_dist(boxes, conf, overlap_threshold):
-        
+    # print("Using nms_crnr_dist")   
     I = np.argsort(conf) # sort bounding boxes by confidence scores
     pick = [] # initialize the list of picked indexes
     while (I.size!=0): # keep looping while some indexes still remain in the indexes list

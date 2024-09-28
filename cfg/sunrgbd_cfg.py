@@ -37,20 +37,22 @@ __C.NUM_HEADING_BIN = 12
 __C.MAX_NUM_OBJ = 64 # maximum number of objects allowed per scene
 __C.MEAN_COLOR_RGB = np.array([0.5,0.5,0.5]) # sunrgbd color is in 0~1
 
-__C.NUM_BASE_CLASSES = 5
-__C.BASE_TYPES = ['bathtub', 'bed', 'bookshelf', 'chair', 'desk']
-__C.BASE_CLASSES = [0, 1, 2, 3, 4]
+__C.NUM_BASE_CLASSES = 10
+__C.BASE_TYPES = ['bathtub', 'bed', 'bookshelf', 'chair', 'desk','dresser', 'night_stand', 'sofa', 'table', 'toilet']
+__C.BASE_CLASSES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-__C.NUM_NOVEL_CLASSES = 5
-__C.NOVEL_TYPES = ['dresser', 'night_stand', 'sofa', 'table', 'toilet']
-__C.NOVEL_CLASSES = [5, 6, 7, 8, 9]
+__C.NUM_NOVEL_CLASSES = 0
+__C.NOVEL_TYPES = []
+__C.NOVEL_CLASSES = []
 
 
 def get_class2scans(data_path, split='train'):
     '''Generate a mapping dictionary whose key is the class name and the values are the corresponding scan names
        containing objects of this class
     '''
+    print("data path:", data_path)
     index_data_path = os.path.join(data_path, 'index_data')
+    # print("index data path:", index_data_path)
     class2scans_file = os.path.join(index_data_path, '%s_class2scans.pkl' %split)
     if not os.path.exists(index_data_path): os.mkdir(index_data_path)
 
@@ -60,7 +62,7 @@ def get_class2scans(data_path, split='train'):
     else:
         class2scans = {c: [] for c in __C.TYPE_WHITELIST}
         scan_data_path = os.path.join(data_path, 'sunrgbd_%s_pc_bbox_50k_%s' %('v1' if __C.USE_V1 else 'v2', split))
-        print(scan_data_path)
+        print("scan_data path:", scan_data_path)
         all_scan_names = list(set([os.path.basename(x)[0:6] for x in os.listdir(scan_data_path)]))
         for scan_name in all_scan_names:
             bboxes = np.load(os.path.join(scan_data_path, scan_name)+'_bbox.npy')
