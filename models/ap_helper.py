@@ -10,7 +10,7 @@ import sys
 import numpy as np
 import torch
 
-from utils.eval_det import eval_det_spatialzones_multiprocessing
+from utils.eval_det import eval_det_spatialzones, eval_det_spatialzones_multiprocessing
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
@@ -453,7 +453,7 @@ class APCalculator(object):
         # save_gt_pred_bboxes(self.pred_map_cls, self.gt_map_cls, img_id=7, save_dir='gt_pred_bboxes', dataset=dataset)
 
         # Retrieve the spatial zones metrics:
-        sz_rec, sz_prec, sz_ap = eval_det_spatialzones_multiprocessing(
+        sz_rec, sz_prec, sz_ap = eval_det_spatialzones(
             self.pred_map_cls, self.gt_map_cls,
             ovthresh=self.ap_iou_thresh, get_iou_func=get_iou_obb, n=4
         )

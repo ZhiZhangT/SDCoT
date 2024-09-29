@@ -22,7 +22,7 @@
 import numpy as np
 import pandas as pd
 import os
-from ground_truth_object_results.sela_loss_nms_investigation.analyze_spatialzones import divide_scene, get_scene_dimensions_center, get_zone_for_bbox, get_zones_for_gt_bboxes, plot_scene_go
+from ground_truth_object_results.sela_loss_nms_investigation.analyze_spatialzones import divide_scene, flip_axis_to_camera, flip_axis_to_depth, get_scene_dimensions_center, get_zone_for_bbox, get_zones_for_gt_bboxes, plot_scene_go, plot_scene_o3d
 
 
 def voc_ap(rec, prec, use_07_metric=False):
@@ -409,6 +409,7 @@ def eval_det_spatialzones_multiprocessing(pred_all, gt_all, ovthresh=0.25, use_0
         for bbox_index, (classname, bbox, score) in enumerate(pred_all[img_id]):
             bbox_center = np.mean(bbox, axis=0)
             zone_index = get_zone_for_bbox(bbox_center=bbox_center, zones=zones)
+            '''
             if zone_index == -1:
                 print('Zone index is -1 for bbox: ', bbox)
                 print('Scene center: ', scene_center)
@@ -419,6 +420,7 @@ def eval_det_spatialzones_multiprocessing(pred_all, gt_all, ovthresh=0.25, use_0
                 print('Img_id: ', img_id)
                 plot_scene_go(zones, [bbox_center], gt_entities)
                 break
+            '''
             pred_all[img_id][bbox_index] = (classname, bbox, score, zone_index)
         
         for classname, bbox, score, zone_index in pred_all[img_id]:
@@ -455,6 +457,98 @@ def eval_det_spatialzones_multiprocessing(pred_all, gt_all, ovthresh=0.25, use_0
         for classname in gt[zone_index]:
             if classname not in pred.get(zone_index, {}):
                 rec.setdefault(zone_index, {})[classname] = np.array([]) 
+                prec.setdefault(zone_index, {})[classname] = np.array([])
+                ap.setdefault(zone_index, {})[classname] = 0.0
+                print(zone_index, classname, 0.0)
+
+    return rec, prec, ap
+
+
+def eval_det_spatialzones(pred_all, gt_all, ovthresh=0.25, use_07_metric=False, get_iou_func=get_iou, n=4):
+    """Compute precision/recall for object detection across multiple spatial zones and classes.
+
+    Args:
+        pred_all (dict): Map of {img_id: [(classname, bbox, score)]}
+        gt_all (dict): Map of {img_id: [(classname, bbox)]}
+        ovthresh (float): IoU threshold.
+        use_07_metric (bool): If True, use VOC07 11 point method.
+        get_iou_func (function): Function to compute IoU.
+        n (int): Number of spatial zones.
+
+    Returns:
+        rec (dict): {spatialzone_idx: {classname: rec_array}}
+        prec (dict): {spatialzone_idx: {classname: prec_array}}
+        ap (dict): {spatialzone_idx: {classname: ap_value}}
+    """
+    pred = {}  # Map {zone_index: {classname: {img_id: [(bbox, score), ...]}}}
+    gt = {}    # Map {zone_index: {classname: {img_id: [bbox, ...]}}}
+    
+    gt_zone_mappings = {} # Dictionary( img_id: Dictionary( bbox_index: (classname, zone_index) ) )
+    pred_zone_mappings = {} # Dictionary( img_id: Dictionary( bbox_index: (classname, zone_index) ) )
+    
+
+    # Process ground truth data
+    for img_id in gt_all.keys():
+        gt_zone_mappings[img_id] = get_zones_for_gt_bboxes(img_id, n_zones=n)
+        for bbox_index, (classname, bbox) in enumerate(gt_all[img_id]):
+            zone_index = gt_zone_mappings[img_id][bbox_index][1]
+            gt_all[img_id][bbox_index] = (classname, bbox, zone_index)
+
+        for classname, bbox, zone_index in gt_all[img_id]:
+            gt.setdefault(zone_index, {}).setdefault(classname, {}).setdefault(img_id, []).append(bbox)
+
+    # Process prediction data
+    for img_id in pred_all.keys():
+        (scene_dimensions, scene_center, gt_entities) = get_scene_dimensions_center(img_id)
+        zones = divide_scene(n, scene_dimensions, scene_center)
+
+        for bbox_index, (classname, bbox, score) in enumerate(pred_all[img_id]):
+            bbox_camera = flip_axis_to_camera(bbox)
+            # bbox_depth = flip_axis_to_depth(bbox_camera)
+            # bbox_depth = flip_axis_to_depth(bbox_depth)
+            bbox_center = np.mean(bbox_camera, axis=0)
+            
+            zone_index = get_zone_for_bbox(bbox_center=bbox_center, zones=zones)
+            
+            if zone_index == -1:
+                print('Zone index is -1 for bbox: ', bbox_camera)
+                print('Scene center: ', scene_center)
+                print('Scene dimensions: ', scene_dimensions)
+                print('Zones: ', zones)
+                print('Bbox center: ', bbox_center)
+                print('Bbox: ', bbox_camera)
+                print('Img_id: ', img_id)
+                plot_scene_go(zones, [bbox_camera], gt_entities)
+                break
+            
+            pred_all[img_id][bbox_index] = (classname, bbox, score, zone_index)
+
+        for classname, bbox, score, zone_index in pred_all[img_id]:
+            pred.setdefault(zone_index, {}).setdefault(classname, {}).setdefault(img_id, []).append((bbox, score))
+
+    rec = {}
+    prec = {}
+    ap = {}
+
+    # Sequentially evaluate each zone and class
+    for zone_index in gt.keys():
+        for classname in gt[zone_index]:
+            gt_data = gt[zone_index][classname]
+            pred_data = pred.get(zone_index, {}).get(classname, {})
+            rec_zone_cls, prec_zone_cls, ap_zone_cls = eval_det_cls(
+                pred_data, gt_data, ovthresh=ovthresh,
+                use_07_metric=use_07_metric, get_iou_func=get_iou_func
+            )
+            rec.setdefault(zone_index, {})[classname] = rec_zone_cls
+            prec.setdefault(zone_index, {})[classname] = prec_zone_cls
+            ap.setdefault(zone_index, {})[classname] = ap_zone_cls
+            print(zone_index, classname, ap_zone_cls)
+
+    # Handle classes not present in predictions by setting metrics to zero
+    for zone_index in gt.keys():
+        for classname in gt[zone_index]:
+            if classname not in pred.get(zone_index, {}):
+                rec.setdefault(zone_index, {})[classname] = np.array([])
                 prec.setdefault(zone_index, {})[classname] = np.array([])
                 ap.setdefault(zone_index, {})[classname] = 0.0
                 print(zone_index, classname, 0.0)
