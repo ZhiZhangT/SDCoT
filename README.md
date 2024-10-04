@@ -12,19 +12,26 @@ By <a href="https://github.com/ZhiZhangT" target="_blank">Tee Zhi Zhang</a> ,sup
 Overall Motivation:
 Better object detection performance, especially for objects found on the scene fringes through addressing spatial biases.
 
+
 ## Initial Analysis on bounding box positions in the SunRGBD dataset:
 From our initial data analysis, we observe that objects of the same class share characteristics about their positions in a scene!
 
 For more detail, refer to <a href="https://github.com/ZhiZhangT/3DResearch/blob/master/valdata_sunrgb_data_analysis%20.ipynb" target="_blank">this notebook.</a>
 
+
 ## Spatial Zone Analysis of bounding box positions in ScanNet dataset:
 ![spatial zone scene](image-1.png)
+
 We created a way to divide a scene up into different spatial zones, and assign each bounding box to a zone, so that we can assess the model's performance across these zones. From our experiments with the <a href="https://github.com/facebookresearch/votenet " target="_blank">VoteNet</a> training architecture, we can see that generally, recall values of predictions decrease as we move out from the center of the scene.
+
 
 ## Approaches to mitigate spatial biases during model training:
 Referencing the <a href="https://github.com/Zzh-tju/ZoneEval" target="_blank">ZoneEval</a> paper and repository, we adopt their two proposed approaches of Spatial Equilibrium Loss and Spatial equilibrium label assignment (Dynamic NMS), but modify them for 3D scenes instead of the original 2D image use case. From our initial experiments, we concluded that these solutions do not mitigate spatial bias significantly, and leaves room for further work to be done in this direction.
 
+
 ![results of mitigation approaches](image-2.png)
+
+
 
 For more detail, refer to <a href="https://github.com/ZhiZhangT/SDCoT/blob/main/ground_truth_object_results/sela_loss_nms_investigation/analysis_of_selaloss_nms.ipynb" target="_blank">this notebook.</a>
 
